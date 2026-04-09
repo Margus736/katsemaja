@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eva Raudkivi | Savisse voolitud naiselikkus</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="top">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html">Eva Raudkivi</a>
+    <div class="nav__center">
+      <ul class="nav__links">
+        <li><a class="nav__link nav__link--active" href="#portfolio" data-et="Portfolio" data-en="Portfolio">Portfolio</a></li>
+        <li><a class="nav__link" href="#about" data-et="Minust" data-en="About Me">Minust</a></li>
+        <li><a class="nav__link" href="#calendar" data-et="Laadakalender" data-en="Fair Calendar">Laadakalender</a></li>
+        <li><a class="nav__link" href="#contact" data-et="Kontakt" data-en="Contact">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="nav__right">
+      <div class="lang-switcher" role="group" aria-label="Keelevalik / Language">
+        <button class="lang-btn lang-btn--active" id="btnEt" onclick="setLang('et')" aria-pressed="true">ET</button>
+        <button class="lang-btn" id="btnEn" onclick="setLang('en')" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burgerBtn" aria-label="Ava menüü">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__mobile" id="mobileMenu">
+    <a class="nav__link nav__link--active" href="#portfolio" onclick="closeMobile()" data-et="Portfolio" data-en="Portfolio">Portfolio</a>
+    <a class="nav__link" href="#about" onclick="closeMobile()" data-et="Minust" data-en="About Me">Minust</a>
+    <a class="nav__link" href="#calendar" onclick="closeMobile()" data-et="Laadakalender" data-en="Fair Calendar">Laadakalender</a>
+    <a class="nav__link" href="#contact" onclick="closeMobile()" data-et="Kontakt" data-en="Contact">Kontakt</a>
+    <div class="lang-switcher" role="group">
+      <button class="lang-btn lang-btn--active" id="btnEtMob" onclick="setLang('et')">ET</button>
+      <button class="lang-btn" id="btnEnMob" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg">
+      <img src="esipilt.jpg" alt="Käsitöö savikausid pehmes loomuvalges"/>
+    </div>
+    <div class="hero__content">
+      <div class="hero__box">
+        <h1 class="hero__title">
+          <span data-et="Savisse voolitud <em>naiselikkus</em> ja muinasjutud"
+                data-en="Clay-shaped <em>femininity</em> and fairy tales"></span>
+        </h1>
+        <p class="hero__subtitle"
+           data-et="Leidmaks igapäevasest võlukunsti, peatudes hetkes, kus käed kohtuvad saviga ja loovad loo, mis kestab üle aja."
+           data-en="Finding magic in the everyday — pausing in the moment where hands meet clay and stories are shaped to last beyond time."></p>
+        <a class="hero__cta" href="#portfolio">
+          <span data-et="Vaata loomingut" data-en="View my work"></span>
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO — COLLECTIONS -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-tag" data-et="Galerii" data-en="Gallery">Galerii</span>
+          <h2 class="section-title" data-et="Kollektsioonid" data-en="Collections">Kollektsioonid</h2>
+        </div>
+      </div>
+
+      <div class="collections-grid">
+
+        <!-- 1. Pojengipiiga -->
+        <a class="collection-card" href="kollektsioon-pojengipiiga.html">
+          <img class="collection-card__img" src="pojengipiiga/kaas.jpg" alt="Pojengipiiga seeria"/>
+          <div class="collection-card__overlay"></div>
+          <div class="collection-card__body">
+            <span class="collection-card__tag" data-et="Keraamika" data-en="Ceramics">Keraamika</span>
+            <div class="collection-card__title">"Pojengipiiga"</div>
+            <span class="collection-card__arrow">
+              <span data-et="Vaata kollektsiooni" data-en="View collection">Vaata kollektsiooni</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 2. Kiilipiiga -->
+        <a class="collection-card" href="kollektsioon-kiilipiiga.html">
+          <img class="collection-card__img" src="kiilipiiga/kaas.jpg" alt="Kiilipiiga seeria"/>
+          <div class="collection-card__overlay"></div>
+          <div class="collection-card__body">
+            <span class="collection-card__tag" data-et="Keraamika" data-en="Ceramics">Keraamika</span>
+            <div class="collection-card__title">"Kiilipiiga"</div>
+            <span class="collection-card__arrow">
+              <span data-et="Vaata kollektsiooni" data-en="View collection">Vaata kollektsiooni</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 3. Inglipiiga -->
+        <a class="collection-card" href="kollektsioon-inglipiiga.html">
+          <img class="collection-card__img" src="inglipiiga/kaas.jpg" alt="Inglipiiga seeria"/>
+          <div class="collection-card__overlay"></div>
+          <div class="collection-card__body">
+            <span class="collection-card__tag" data-et="Keraamika" data-en="Ceramics">Keraamika</span>
+            <div class="collection-card__title">"Inglipiiga"</div>
+            <span class="collection-card__arrow">
+              <span data-et="Vaata kollektsiooni" data-en="View collection">Vaata kollektsiooni</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 4. Kaunispiiga -->
+        <a class="collection-card" href="kollektsioon-kaunispiiga.html">
+          <img class="collection-card__img" src="kaunispiiga/kaas.jpg" alt="Kaunispiiga seeria"/>
+          <div class="collection-card__overlay"></div>
+          <div class="collection-card__body">
+            <span class="collection-card__tag" data-et="Keraamika" data-en="Ceramics">Keraamika</span>
+            <div class="collection-card__title">"Kaunispiiga"</div>
+            <span class="collection-card__arrow">
+              <span data-et="Vaata kollektsiooni" data-en="View collection">Vaata kollektsiooni</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+        <!-- 5. Siidimaalid -->
+        <a class="collection-card" href="kollektsioon-siidimaalid.html">
+          <img class="collection-card__img" src="siidimaalid/kaas.jpg" alt="Siidimaalid"/>
+          <div class="collection-card__overlay"></div>
+          <div class="collection-card__body">
+            <span class="collection-card__tag" data-et="Siidimaal" data-en="Silk Painting">Siidimaal</span>
+            <div class="collection-card__title">Siidimaalid</div>
+            <span class="collection-card__arrow">
+              <span data-et="Vaata kollektsiooni" data-en="View collection">Vaata kollektsiooni</span>
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SILK SECTION -->
+  <section class="silk-section">
+    <div class="container">
+      <div class="silk-grid">
+        <div class="silk-img-wrap" style="order:1;">
+          <div class="silk-img-glow"></div>
+          <img src="siidimaalid/kaas.jpg" alt="Siidimaal"/>
+        </div>
+        <div class="silk-text" style="order:2;">
+          <span class="silk-tag" data-et="Värv ja voog" data-en="Colour & Flow">Värv ja voog</span>
+          <h2 class="silk-title" data-et="Siidimaali lumm" data-en="The Allure of Silk Painting">Siidimaali lumm</h2>
+          <p class="silk-body"
+             data-et="Siid on kui vedel valgus. Maalimine sellel nõuab kannatlikkust ja alistumist värvi loomulikule kulgemisele. Minu maalid on kantavad lood, mis paitavad nii keha kui hinge."
+             data-en="Silk is like liquid light. Painting on it demands patience and surrender to the natural flow of colour. My paintings are wearable stories that caress both body and soul.">
+          </p>
+          <a class="btn-ghost" href="kollektsioon-siidimaalid.html"
+             data-et="Tutvu kollektsiooniga" data-en="Explore the collection">Tutvu kollektsiooniga</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-photo">
+          <img src="eva_raudkivi.jpg" alt="Eva Raudkivi stuudios"/>
+          <div class="about-photo__overlay"></div>
+        </div>
+        <div class="about-text">
+          <div>
+            <h2 class="about-title" data-et="Minu filosoofia" data-en="My Philosophy">Minu filosoofia</h2>
+            <p class="about-body"
+               data-et="Minu jaoks on keraamika meditatsioon. See on dialoog maa ja tule vahel. Iga ese, mis minu käte vahelt väljub, kannab endas killukest minu maailmast ja soovist tuua ilu ja soojust igasse päeva."
+               data-en="For me, ceramics is a meditation — a dialogue between earth and fire. Every piece that leaves my hands carries a fragment of my world and my wish to bring beauty and warmth into every day."></p>
+          </div>
+          <div class="philosophy-list">
+            <div class="philosophy-item">
+              <div class="philosophy-icon philosophy-icon--green">
+                <span class="material-symbols-outlined">auto_awesome</span>
+              </div>
+              <div>
+                <h4 class="philosophy-name" data-et="Kordumatus" data-en="Uniqueness">Kordumatus</h4>
+                <p class="philosophy-desc"
+                   data-et="Puudub masstoodang, iga kumerus on käejälje ja hetke peegeldus."
+                   data-en="No mass production — every curve is a reflection of a handprint and a moment in time."></p>
+              </div>
+            </div>
+            <div class="philosophy-item">
+              <div class="philosophy-icon philosophy-icon--rose">
+                <span class="material-symbols-outlined">eco</span>
+              </div>
+              <div>
+                <h4 class="philosophy-name" data-et="Looduse puudutus" data-en="Nature's Touch">Looduse puudutus</h4>
+                <p class="philosophy-desc"
+                   data-et="Materjalid ja värvid, mis on inspireeritud Eestimaa metsadest ja rabadest."
+                   data-en="Materials and colours inspired by the forests and bogs of Estonia."></p>
+              </div>
+            </div>
+            <div class="philosophy-item">
+              <div class="philosophy-icon philosophy-icon--mauve">
+                <span class="material-symbols-outlined">favorite</span>
+              </div>
+              <div>
+                <h4 class="philosophy-name" data-et="Südamesoojus" data-en="Heartfelt Warmth">Südamesoojus</h4>
+                <p class="philosophy-desc"
+                   data-et="Iga ese on loodud hoolega, et see tooks rõõmu ja hubasust selle uuele omanikule."
+                   data-en="Every piece is crafted with care, to bring joy and cosiness to its new owner."></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR -->
+  <section class="calendar" id="calendar">
+    <div class="container">
+      <div class="calendar-header">
+        <h2 class="section-title" data-et="Laadakalender" data-en="Fair Calendar">Laadakalender</h2>
+        <p class="calendar-subtitle"
+           data-et="Tule kohtume ja vali oma lemmikese kohapeal. Ootan sind rõõmuga!"
+           data-en="Come meet me and choose your favourite piece in person. I look forward to seeing you!"></p>
+      </div>
+      <div class="calendar-table">
+        <div class="calendar-table-head">
+          <span data-et="Kuupäev" data-en="Date">Kuupäev</span>
+          <span data-et="Kell" data-en="Time">Kell</span>
+          <span data-et="Asukoht" data-en="Location">Asukoht</span>
+          <span data-et="Sündmus" data-en="Event">Sündmus</span>
+        </div>
+        <div class="calendar-row">
+          <div class="calendar-date">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span data-et="14. Detsember" data-en="14 December">14. Detsember</span>
+          </div>
+          <div class="calendar-time">10:00 – 17:00</div>
+          <div class="calendar-location">
+            <span class="material-symbols-outlined">location_on</span>Tallinn, Kultuurikatel
+          </div>
+          <div class="calendar-event">Disainiturg "Kellu"</div>
+        </div>
+        <div class="calendar-row">
+          <div class="calendar-date">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span data-et="21. Detsember" data-en="21 December">21. Detsember</span>
+          </div>
+          <div class="calendar-time">09:00 – 16:00</div>
+          <div class="calendar-location">
+            <span class="material-symbols-outlined">location_on</span>Tartu, Raekoja Plats
+          </div>
+          <div class="calendar-event" data-et="Jõululaat Emajõe Ateenas" data-en="Christmas Fair at Emajõe Athenæum">Jõululaat Emajõe Ateenas</div>
+        </div>
+        <div class="calendar-row">
+          <div class="calendar-date">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span data-et="12. Jaanuar" data-en="12 January">12. Jaanuar</span>
+          </div>
+          <div class="calendar-time">11:00 – 18:00</div>
+          <div class="calendar-location">
+            <span class="material-symbols-outlined">location_on</span>Pärnu, Uue Kunsti Muuseum
+          </div>
+          <div class="calendar-event" data-et="Talvine Käsitööpäev" data-en="Winter Craft Day">Talvine Käsitööpäev</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2 class="contact-title" data-et="Küsi sarnast toodet" data-en="Request a Similar Piece">Küsi sarnast toodet</h2>
+          <p class="contact-desc"
+             data-et="Kui sind kõnetab mõni juba müüdud ese või soovid midagi täiesti erilist ja personaalset, siis kirjuta mulle julgelt. Loome koos midagi ilusat."
+             data-en="If a sold piece has caught your eye, or you'd like something truly unique and personal, don't hesitate to write. Let's create something beautiful together."></p>
+          <div class="contact-info">
+            <div class="contact-info-item">
+              <span class="material-symbols-outlined">mail</span>
+              <a href="mailto:eva@raudkivi.ee">eva@raudkivi.ee</a>
+            </div>
+            <div class="contact-info-item">
+              <span class="material-symbols-outlined">phone_iphone</span>
+              <a href="tel:+3725551234">+372 555 1234</a>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-field">
+            <label class="form-label" for="name" data-et="Sinu nimi" data-en="Your name">Sinu nimi</label>
+            <input class="form-input" id="name" type="text"
+                   data-placeholder-et="Kirjuta siia..." data-placeholder-en="Write here..."
+                   placeholder="Kirjuta siia..." autocomplete="name" required/>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="email">E-mail</label>
+            <input class="form-input" id="email" type="email"
+                   data-placeholder-et="näide@postkast.ee" data-placeholder-en="example@mailbox.com"
+                   placeholder="näide@postkast.ee" autocomplete="email" required/>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="message" data-et="Sinu soov" data-en="Your request">Sinu soov</label>
+            <textarea class="form-textarea" id="message" rows="4"
+                      data-placeholder-et="Millist eset soovid tellida?"
+                      data-placeholder-en="Which piece would you like to order?"
+                      placeholder="Millist eset soovid tellida?" required></textarea>
+          </div>
+          <button class="btn-primary" type="submit" data-et="Saada kiri" data-en="Send message">Saada kiri</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">Eva Raudkivi</span>
+      <p class="footer__copy">© 2024 Eva Raudkivi. Handcrafted with soul.</p>
+    </div>
+    <ul class="footer__links">
+      <li><a class="footer__link" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a class="footer__link" href="https://www.pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
+      <li><a class="footer__link" href="https://www.etsy.com" target="_blank" rel="noopener">Etsy</a></li>
+      <li><a class="footer__link" href="#contact" data-et="Kontakt" data-en="Contact">Kontakt</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+let currentLang = localStorage.getItem('eva-lang') || 'et';
+let submitFeedbackText = 'Saadetud ✓';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('eva-lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  const lang = currentLang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-et][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    if (el.tagName === 'SPAN' && el.parentElement && el.parentElement.tagName === 'H1') {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
+
+  document.querySelectorAll('[data-placeholder-et]').forEach(el => {
+    el.placeholder = el.getAttribute('data-placeholder-' + lang) || '';
+  });
+
+  ['Et','En'].forEach(l => {
+    const lower = l.toLowerCase();
+    ['btn'+l, 'btn'+l+'Mob'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.classList.toggle('lang-btn--active', lower === lang);
+      btn.setAttribute('aria-pressed', lower === lang ? 'true' : 'false');
+    });
+  });
+
+  submitFeedbackText = lang === 'et' ? 'Saadetud ✓' : 'Sent ✓';
+  document.title = lang === 'et'
+    ? 'Eva Raudkivi | Savisse voolitud naiselikkus'
+    : 'Eva Raudkivi | Clay-shaped Femininity';
+}
+
+applyLang();
+
+const burger = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const burgerIcon = burger.querySelector('.material-symbols-outlined');
+burger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('is-open');
+  burgerIcon.textContent = isOpen ? 'close' : 'menu';
+});
+function closeMobile() {
+  mobileMenu.classList.remove('is-open');
+  burgerIcon.textContent = 'menu';
+}
+
+const sections = ['portfolio', 'about', 'calendar', 'contact'];
+const navLinks = document.querySelectorAll('.nav__links .nav__link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => link.classList.remove('nav__link--active'));
+      const target = document.querySelector(`.nav__links a[href="#${entry.target.id}"]`);
+      if (target) target.classList.add('nav__link--active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(id => { const el = document.getElementById(id); if (el) observer.observe(el); });
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-primary');
+  const original = btn.getAttribute('data-' + currentLang) || btn.textContent;
+  btn.textContent = submitFeedbackText;
+  btn.style.opacity = '0.7';
+  setTimeout(() => { btn.textContent = original; btn.style.opacity = ''; e.target.reset(); }, 2500);
+}
+</script>
+</body>
+</html>
