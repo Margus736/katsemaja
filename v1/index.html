@@ -3,126 +3,962 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Käsitööliste tööriista funktsionaalsused</title>
+<title>Käsitöö — ülesanded</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-  body { font-family: sans-serif; background: #F5F2ED; margin: 0; padding: 20px; }
+  :root {
+    --bg: #F5F2ED;
+    --surface: #FDFCFA;
+    --surface2: #F0EDE7;
+    --border: rgba(60,48,30,0.1);
+    --border-md: rgba(60,48,30,0.18);
+    --text: #1E1A14;
+    --text-muted: #7A7060;
+    --text-hint: #ADA596;
+    --accent: #C17F3B;
+    --accent-light: #F5E8D4;
+    --cat-order: #6B5FCF;
+    --cat-order-bg: #EFEDFB;
+    --cat-order-border: #C5C0F0;
+    --cat-fair: #1B8F6A;
+    --cat-fair-bg: #E0F4EE;
+    --cat-fair-border: #9FE1CB;
+    --cat-idea: #C17F3B;
+    --cat-idea-bg: #F5E8D4;
+    --cat-idea-border: #F0C98A;
+    --cat-admin: #C0547A;
+    --cat-admin-bg: #F9E8EF;
+    --cat-admin-border: #EDACC5;
+    --col-todo: #E8E4DE;
+    --col-wip: #F5E8D4;
+    --col-done: #E0F4EE;
+  }
+  /* ── CARD THUMBNAIL ── */
+  .card-thumb {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 7px;
+    margin-bottom: 9px;
+    display: block;
+    background: var(--surface2);
+  }
+  /* ── DARK MODE ── */
+  body.dark {
+    --bg: #18160F;
+    --surface: #211E15;
+    --surface2: #2A2720;
+    --border: rgba(255,240,200,0.08);
+    --border-md: rgba(255,240,200,0.14);
+    --text: #EDE8DF;
+    --text-muted: #9E9484;
+    --text-hint: #6B6254;
+    --accent: #D4944A;
+    --accent-light: #2E2218;
+    --cat-order-bg: #1E1C33;
+    --cat-order-border: #3B3680;
+    --cat-fair-bg: #0D2720;
+    --cat-fair-border: #1A5440;
+    --cat-idea-bg: #2E2218;
+    --cat-idea-border: #6B4A1A;
+    --cat-admin-bg: #2A1520;
+    --cat-admin-border: #6B2A42;
+  }
+  /* theme toggle */
+  .theme-toggle {
+    width: 36px; height: 20px;
+    border-radius: 999px;
+    background: var(--surface2);
+    border: 1px solid var(--border-md);
+    position: relative;
+    cursor: pointer;
+    transition: background 0.25s, border-color 0.25s;
+    flex-shrink: 0;
+  }
+  body.dark .theme-toggle { background: #3B3020; border-color: #6B4A1A; }
+  .theme-toggle-knob {
+    position: absolute;
+    top: 2px; left: 2px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+    display: flex; align-items: center; justify-content: center;
+  }
+  body.dark .theme-toggle-knob { transform: translateX(16px); }
+  .theme-toggle-knob svg { width: 9px; height: 9px; color: #fff; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  /* ── SIDEBAR ── */
+  .layout { display: flex; min-height: 100vh; }
+  .sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .sidebar-logo {
+    padding: 24px 20px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: -0.3px;
+  }
+  .sidebar-logo span {
+    font-size: 11px;
+    color: var(--text-hint);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-top: 2px;
+  }
+  .sidebar-nav { padding: 16px 12px; flex: 1; }
+  .nav-section-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-hint);
+    padding: 0 8px;
+    margin: 16px 0 6px;
+  }
+  .nav-section-label:first-child { margin-top: 0; }
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 7px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    font-weight: 400;
+    transition: background 0.15s, color 0.15s;
+    text-decoration: none;
+  }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { background: var(--accent-light); color: var(--accent); font-weight: 500; }
+  .nav-item svg { width: 15px; height: 15px; flex-shrink: 0; opacity: 0.7; }
+  .nav-item.active svg { opacity: 1; }
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+  }
+  .avatar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .avatar {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 500; color: var(--accent);
+    flex-shrink: 0;
+  }
+  .avatar-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .avatar-role { font-size: 11px; color: var(--text-hint); }
+  /* ── MAIN ── */
+  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .topbar-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    flex: 1;
+    letter-spacing: -0.3px;
+  }
+
+  .topbar-actions { display: flex; gap: 8px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    border: 1px solid var(--border-md);
+    background: var(--surface);
+    color: var(--text-muted);
+  }
+  .btn:hover { background: var(--surface2); color: var(--text); }
+  .btn.primary {
+    background: var(--text);
+    color: var(--surface);
+    border-color: var(--text);
+  }
+  .btn.primary:hover { background: #3a3020; }
+  .btn svg { width: 14px; height: 14px; }
+  .btn-group {
+    display: flex;
+    border: 1px solid var(--border-md);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .btn-group .btn {
+    border: none;
+    border-radius: 0;
+    border-right: 1px solid var(--border);
+  }
+  .btn-group .btn:last-child { border-right: none; }
+  .btn-group .btn.active { background: var(--accent-light); color: var(--accent); }
+  /* ── FILTER BAR ── */
+  .filterbar {
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    flex-wrap: wrap;
+  }
+  .filter-label { font-size: 12px; color: var(--text-hint); margin-right: 4px; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    border: 1px solid var(--border-md);
+    background: var(--surface);
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+  .chip.active { background: var(--accent-light); border-color: var(--cat-idea-border); color: var(--accent); font-weight: 500; }
+  .chip.cat-order.active { background: var(--cat-order-bg); border-color: var(--cat-order-border); color: var(--cat-order); }
+  .chip.cat-fair.active { background: var(--cat-fair-bg); border-color: var(--cat-fair-border); color: var(--cat-fair); }
+  .chip.cat-idea.active { background: var(--cat-idea-bg); border-color: var(--cat-idea-border); color: var(--cat-idea); }
+  .chip.cat-admin.active { background: var(--cat-admin-bg); border-color: var(--cat-admin-border); color: var(--cat-admin); }
+  .chip-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .search-wrap { margin-left: auto; position: relative; }
+  .search-wrap svg { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); width: 13px; height: 13px; color: var(--text-hint); }
+  .search-input {
+    padding: 5px 10px 5px 28px;
+    border: 1px solid var(--border-md);
+    border-radius: 8px;
+    background: var(--surface);
+    font-size: 13px;
+    color: var(--text);
+    font-family: inherit;
+    width: 180px;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-input:focus { border-color: var(--accent); }
+  .search-input::placeholder { color: var(--text-hint); }
+  /* ── KANBAN BOARD ── */
+  .board-area {
+    flex: 1;
+    overflow: auto;
+    padding: 20px 24px;
+  }
+  .kanban-cols {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    min-width: 900px;
+  }
+  .kanban-col {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .col-header {
+    padding: 12px 14px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .col-stripe {
+    width: 3px;
+    height: 16px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .col-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    flex: 1;
+  }
+  .col-count {
+    font-size: 11px;
+    background: var(--surface2);
+    color: var(--text-hint);
+    border-radius: 999px;
+    padding: 1px 8px;
+    font-weight: 500;
+  }
+  .col-body { padding: 10px; min-height: 200px; }
+  /* ── CARDS ── */
+  .task-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 12px;
+    margin-bottom: 8px;
+    cursor: grab;
+    transition: border-color 0.15s, transform 0.1s;
+    position: relative;
+    overflow: hidden;
+  }
+  .task-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0;
+  }
+  .task-card[data-cat="tellimus"]::before { background: var(--cat-order); }
+  .task-card[data-cat="mess"]::before { background: var(--cat-fair); }
+  .task-card[data-cat="idee"]::before { background: var(--cat-idea); }
+  .task-card[data-cat="haldus"]::before { background: var(--cat-admin); }
+  .task-card:hover { border-color: var(--border-md); transform: translateY(-1px); }
+  .task-card:active { transform: translateY(0); }
+  .card-title {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 8px;
+    padding-left: 8px;
+  }
+  .card-title.done-text {
+    color: var(--text-hint);
+    text-decoration: line-through;
+  }
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    padding-left: 8px;
+  }
+  .cat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-weight: 400;
+    border: 1px solid;
+  }
+  .cat-pill[data-cat="tellimus"] { background: var(--cat-order-bg); border-color: var(--cat-order-border); color: var(--cat-order); }
+  .cat-pill[data-cat="mess"] { background: var(--cat-fair-bg); border-color: var(--cat-fair-border); color: var(--cat-fair); }
+  .cat-pill[data-cat="idee"] { background: var(--cat-idea-bg); border-color: var(--cat-idea-border); color: var(--cat-idea); }
+  .cat-pill[data-cat="haldus"] { background: var(--cat-admin-bg); border-color: var(--cat-admin-border); color: var(--cat-admin); }
+  .due-badge {
+    font-size: 11px;
+    color: var(--text-hint);
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .due-badge.urgent { color: #C0392B; }
+  .due-badge svg { width: 11px; height: 11px; }
+  .timer-badge {
+    font-size: 11px;
+    background: #EBF4FC;
+    border: 1px solid #B5D4F4;
+    color: #185FA5;
+    padding: 2px 7px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .timer-badge svg { width: 11px; height: 11px; }
+  .priority-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .p-high { background: #E74C3C; }
+  .p-med { background: var(--accent); }
+  .p-low { background: var(--text-hint); }
+  /* Add task */
+  .add-task-btn {
+    width: 100%;
+    padding: 8px;
+    background: none;
+    border: 1px dashed var(--border-md);
+    border-radius: 8px;
+    font-size: 12.5px;
+    color: var(--text-hint);
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    text-align: center;
+    margin-top: 2px;
+  }
+  .add-task-btn:hover { background: var(--surface2); color: var(--text-muted); border-color: var(--border-md); border-style: solid; }
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20,16,10,0.4);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 28px;
+    width: 420px;
+    max-width: 95vw;
+    border: 1px solid var(--border-md);
+  }
+  .modal h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .form-group { margin-bottom: 14px; }
+  .form-label { font-size: 12px; color: var(--text-muted); margin-bottom: 5px; display: block; font-weight: 500; letter-spacing: 0.02em; }
+  .form-input, .form-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid var(--border-md);
+    border-radius: 8px;
+    font-size: 13.5px;
+    color: var(--text);
+    background: var(--surface);
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-input:focus, .form-select:focus { border-color: var(--accent); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 20px; }
+  /* ── TIMER WIDGET ── */
+  .timer-widget {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface2);
+    border: 1px solid var(--border-md);
+    border-radius: 10px;
+    padding: 8px 14px;
+    margin-bottom: 12px;
+  }
+  .timer-task-name { font-size: 12.5px; font-weight: 500; color: var(--text); flex: 1; }
+  .timer-time { font-size: 15px; font-weight: 500; color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: 0.03em; }
+  .timer-btn {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 1px solid var(--border-md);
+    background: var(--surface);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .timer-btn:hover { background: var(--accent-light); border-color: var(--accent); }
+  .timer-btn svg { width: 12px; height: 12px; }
+  .timer-btn.running { background: var(--accent); border-color: var(--accent); }
+  .timer-btn.running svg { color: white; }
+  /* ── STATS ROW ── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .stat-card {
+    background: var(--bg);
+    border-radius: 8px;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+  }
+  .stat-label { font-size: 11px; color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
+  .stat-value { font-size: 18px; font-weight: 500; color: var(--text); }
+  .stat-sub { font-size: 11px; color: var(--text-hint); margin-top: 1px; }
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .sidebar { display: none; }
+    .kanban-cols { grid-template-columns: 1fr; min-width: unset; }
+    .stats-row { grid-template-columns: repeat(2,1fr); }
+    .topbar-title { font-size: 16px; }
+    .week-nav span { min-width: 90px; }
+  }
 </style>
 </head>
 <body>
-<svg width="100%" viewBox="0 0 680 820" role="img" xmlns="http://www.w3.org/2000/svg">
-  <title>Käsitööliste ja kunstnike tööriista funktsionaalsuste kaart</title>
-  <desc>Kuus peamoodulit koos alamfunktsioonidega</desc>
-  <defs>
-    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-  </defs>
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h1>Käsitöö</h1>
+      <span>tööriist</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Tööjuhtimine</div>
+      <a class="nav-item active" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="1" y="1" width="6" height="6" rx="1.5"/><rect x="9" y="1" width="6" height="6" rx="1.5"/>
+          <rect x="1" y="9" width="6" height="6" rx="1.5"/><rect x="9" y="9" width="6" height="6" rx="1.5"/>
+        </svg>
+        Ülesanded
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="1" y="2" width="14" height="12" rx="2"/><path d="M1 6h14"/><path d="M5 1v2M11 1v2"/>
+        </svg>
+        Kalender
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="8" cy="8" r="6"/><path d="M8 5v3.5l2 2"/>
+        </svg>
+        Taimer
+      </a>
+      <div class="nav-section-label">Loovus</div>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 12V4l5-2 5 2v8l-5 2-5-2z"/>
+        </svg>
+        Märkmik
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M8 2l1.5 4.5H14l-3.5 2.5 1.5 4.5L8 11l-4 2.5 1.5-4.5L2 6.5h4.5z"/>
+        </svg>
+        Tooted
+      </a>
+      <div class="nav-section-label">Äri</div>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 11V7l5-4 5 4v4"/><rect x="6" y="11" width="4" height="4"/>
+        </svg>
+        Sotsiaalmeedia
+      </a>
+      <a class="nav-item" href="#">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="2" y="3" width="12" height="10" rx="1.5"/>
+          <path d="M5 7h6M5 10h4"/>
+        </svg>
+        Finantsid
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="avatar-row">
+        <div class="avatar">ML</div>
+        <div>
+          <div class="avatar-name">Mari Leppik</div>
+          <div class="avatar-role">Käsitööline</div>
+        </div>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Päev / Öö">
+        <div class="theme-toggle-knob" id="theme-knob">
+          <!-- sun icon default -->
+          <svg id="theme-icon" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="7" cy="7" r="2.5"/>
+            <path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M3 3l1 1M10 10l1 1M11 3l-1 1M4 10l-1 1"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </aside>
+  <!-- MAIN CONTENT -->
+  <div class="main">
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-title">Ülesanded</div>
 
-  <style>
-    .th { font-family: sans-serif; font-size: 14px; font-weight: 500; }
-    .ts { font-family: sans-serif; font-size: 12px; font-weight: 400; }
-    .c-purple rect { fill: #EEEDFE; stroke: #534AB7; }
-    .c-purple .th { fill: #3C3489; }
-    .c-purple .ts { fill: #534AB7; }
-    .c-teal rect { fill: #E1F5EE; stroke: #0F6E56; }
-    .c-teal .th { fill: #085041; }
-    .c-teal .ts { fill: #0F6E56; }
-    .c-amber rect { fill: #FAEEDA; stroke: #854F0B; }
-    .c-amber .th { fill: #633806; }
-    .c-amber .ts { fill: #854F0B; }
-    .c-coral rect { fill: #FAECE7; stroke: #993C1D; }
-    .c-coral .th { fill: #712B13; }
-    .c-coral .ts { fill: #993C1D; }
-    .c-blue rect { fill: #E6F1FB; stroke: #185FA5; }
-    .c-blue .th { fill: #0C447C; }
-    .c-blue .ts { fill: #185FA5; }
-    .c-green rect { fill: #EAF3DE; stroke: #3B6D11; }
-    .c-green .th { fill: #27500A; }
-    .c-green .ts { fill: #3B6D11; }
-    .c-pink rect { fill: #FBEAF0; stroke: #993556; }
-    .c-pink .th { fill: #72243E; }
-    .c-pink .ts { fill: #993556; }
-  </style>
-
-  <!-- ROW 1 -->
-  <!-- 1. Ülesannete haldus -->
-  <g class="c-purple">
-    <rect x="30" y="30" width="290" height="170" rx="12" stroke-width="0.5"/>
-    <text class="th" x="175" y="60" text-anchor="middle" dominant-baseline="central">Ülesannete haldus</text>
-    <text class="ts" x="50" y="88" dominant-baseline="central">Kanban vaade (nädala/kuu)</text>
-    <text class="ts" x="50" y="110" dominant-baseline="central">Värvikoodiga taskid</text>
-    <text class="ts" x="50" y="132" dominant-baseline="central">Lohistamine (drag &amp; drop)</text>
-    <text class="ts" x="50" y="154" dominant-baseline="central">Tähtajad ja prioriteedid</text>
-    <text class="ts" x="50" y="176" dominant-baseline="central">Korduvad ülesanded</text>
-  </g>
-
-  <!-- 2. Kalender -->
-  <g class="c-teal">
-    <rect x="360" y="30" width="290" height="170" rx="12" stroke-width="0.5"/>
-    <text class="th" x="505" y="60" text-anchor="middle" dominant-baseline="central">Kalender</text>
-    <text class="ts" x="378" y="88" dominant-baseline="central">Nädala- ja kuuvaade</text>
-    <text class="ts" x="378" y="110" dominant-baseline="central">Värvilised sündmused</text>
-    <text class="ts" x="378" y="132" dominant-baseline="central">Tähtajad ja tellimuskalender</text>
-    <text class="ts" x="378" y="154" dominant-baseline="central">Messide ja turgude planeerimine</text>
-    <text class="ts" x="378" y="176" dominant-baseline="central">Meeldetuletused</text>
-  </g>
-
-  <!-- ROW 2 -->
-  <!-- 3. Märkmik ja ideed -->
-  <g class="c-amber">
-    <rect x="30" y="230" width="290" height="170" rx="12" stroke-width="0.5"/>
-    <text class="th" x="175" y="260" text-anchor="middle" dominant-baseline="central">Märkmik &amp; ideed</text>
-    <text class="ts" x="50" y="288" dominant-baseline="central">Vaba tekst + pildid</text>
-    <text class="ts" x="50" y="310" dominant-baseline="central">Inspiratsiooni kogumine</text>
-    <text class="ts" x="50" y="332" dominant-baseline="central">Materjalide ja retseptide märkmed</text>
-    <text class="ts" x="50" y="354" dominant-baseline="central">Toodete ideekaardid</text>
-    <text class="ts" x="50" y="376" dominant-baseline="central">Siltide ja märksõnadega otsing</text>
-  </g>
-
-  <!-- 4. Toote haldus -->
-  <g class="c-coral">
-    <rect x="360" y="230" width="290" height="170" rx="12" stroke-width="0.5"/>
-    <text class="th" x="505" y="260" text-anchor="middle" dominant-baseline="central">Toote haldus &amp; lansseerimine</text>
-    <text class="ts" x="378" y="288" dominant-baseline="central">Tootekataloogi haldus</text>
-    <text class="ts" x="378" y="310" dominant-baseline="central">Varude jälgimine</text>
-    <text class="ts" x="378" y="332" dominant-baseline="central">Lansseerimise planeerimine</text>
-    <text class="ts" x="378" y="354" dominant-baseline="central">Fotoarhiiv per toode</text>
-    <text class="ts" x="378" y="376" dominant-baseline="central">Tellimuste olek</text>
-  </g>
-
-  <!-- ROW 3 -->
-  <!-- 5. Sotsiaalmeedia -->
-  <g class="c-blue">
-    <rect x="30" y="430" width="290" height="170" rx="12" stroke-width="0.5"/>
-    <text class="th" x="175" y="460" text-anchor="middle" dominant-baseline="central">Sotsiaalmeedia haldus</text>
-    <text class="ts" x="50" y="488" dominant-baseline="central">Sisu kalender (IG, FB, TikTok)</text>
-    <text class="ts" x="50" y="510" dominant-baseline="central">Postituste ajastamine</text>
-    <text class="ts" x="50" y="532" dominant-baseline="central">Sisupanga haldus</text>
-    <text class="ts" x="50" y="554" dominant-baseline="central">Kampaaniate planeerimine</text>
-    <text class="ts" x="50" y="576" dominant-baseline="central">Hashtag-ide ja teksti mallid</text>
-  </g>
-
-  <!-- 6. Finantsid -->
-  <g class="c-green">
-    <rect x="360" y="430" width="290" height="170" rx="12" stroke-width="0.5"/>
-    <text class="th" x="505" y="460" text-anchor="middle" dominant-baseline="central">Finantsid &amp; hinnakujundus</text>
-    <text class="ts" x="378" y="488" dominant-baseline="central">Materjalikulude arvestus</text>
-    <text class="ts" x="378" y="510" dominant-baseline="central">Töötunni hinna kalkulaator</text>
-    <text class="ts" x="378" y="532" dominant-baseline="central">Marginaali ja müügihinna arvutus</text>
-    <text class="ts" x="378" y="554" dominant-baseline="central">Arve genereerimine</text>
-    <text class="ts" x="378" y="576" dominant-baseline="central">Tulu ja kulu ülevaade</text>
-  </g>
-
-  <!-- ROW 4 full width -->
-  <!-- 7. Taimer -->
-  <g class="c-pink">
-    <rect x="30" y="630" width="620" height="150" rx="12" stroke-width="0.5"/>
-    <text class="th" x="340" y="660" text-anchor="middle" dominant-baseline="central">Taimer &amp; tootlikkus</text>
-    <text class="ts" x="60" y="692" dominant-baseline="central">Ülesande-põhine taimer (Pomodoro võimalusega)</text>
-    <text class="ts" x="60" y="714" dominant-baseline="central">Ajakulu per projekt / toode</text>
-    <text class="ts" x="60" y="736" dominant-baseline="central">Automaatne aja logimine</text>
-    <text class="ts" x="60" y="758" dominant-baseline="central">Tunnipalga arvutus tegeliku aja põhjal</text>
-  </g>
-</svg>
+      <div class="btn-group">
+        <button class="btn active" id="btn-kanban" onclick="setView('kanban')">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="1" y="1" width="3" height="12" rx="1"/><rect x="5.5" y="1" width="3" height="8" rx="1"/><rect x="10" y="1" width="3" height="10" rx="1"/>
+          </svg>
+          Kanban
+        </button>
+        <button class="btn" id="btn-list" onclick="setView('list')">
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M3 3h8M3 7h8M3 11h5"/>
+          </svg>
+          Nimekiri
+        </button>
+      </div>
+      <button class="btn primary" onclick="openModal()">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M7 2v10M2 7h10"/>
+        </svg>
+        Lisa ülesanne
+      </button>
+    </div>
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">Kokku</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-sub">selles nädalas</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pooleli</div>
+        <div class="stat-value" id="stat-wip">0</div>
+        <div class="stat-sub">aktiivsed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Tähtajad</div>
+        <div class="stat-value" id="stat-urgent">0</div>
+        <div class="stat-sub" style="color:#C0392B">kiireloomulised</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Valmis</div>
+        <div class="stat-value" id="stat-done">0</div>
+        <div class="stat-sub">lõpetatud</div>
+      </div>
+    </div>
+    <!-- FILTER BAR -->
+    <div class="filterbar">
+      <span class="filter-label">Kategooria:</span>
+      <button class="chip active" data-cat="all" onclick="filterBy('all', this)">Kõik</button>
+      <button class="chip cat-order" data-cat="tellimus" onclick="filterBy('tellimus', this)">
+        <span class="chip-dot" style="background:var(--cat-order)"></span> Tellimused
+      </button>
+      <button class="chip cat-fair" data-cat="mess" onclick="filterBy('mess', this)">
+        <span class="chip-dot" style="background:var(--cat-fair)"></span> Messid
+      </button>
+      <button class="chip cat-idea" data-cat="idee" onclick="filterBy('idee', this)">
+        <span class="chip-dot" style="background:var(--cat-idea)"></span> Ideed
+      </button>
+      <button class="chip cat-admin" data-cat="haldus" onclick="filterBy('haldus', this)">
+        <span class="chip-dot" style="background:var(--cat-admin)"></span> Haldus
+      </button>
+      <div class="search-wrap">
+        <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="6" cy="6" r="4"/><path d="M10 10l2.5 2.5"/>
+        </svg>
+        <input class="search-input" type="text" placeholder="Otsi ülesandeid…" oninput="searchTasks(this.value)" id="search-input">
+      </div>
+    </div>
+    <!-- BOARD -->
+    <div class="board-area">
+      <!-- Active timer widget -->
+      <div class="timer-widget" id="timer-widget" style="display:none">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--accent)" stroke-width="1.5">
+          <circle cx="7" cy="7" r="5"/><path d="M7 4.5V7l1.5 1.5"/>
+        </svg>
+        <span class="timer-task-name" id="timer-task-name">—</span>
+        <span class="timer-time" id="timer-display">00:00</span>
+        <button class="timer-btn running" id="timer-toggle-btn" onclick="toggleTimer()">
+          <svg id="timer-icon" viewBox="0 0 12 12" fill="currentColor">
+            <rect x="2" y="2" width="3" height="8" rx="1"/><rect x="7" y="2" width="3" height="8" rx="1"/>
+          </svg>
+        </button>
+        <button class="timer-btn" onclick="stopTimer()" title="Lõpeta">
+          <svg viewBox="0 0 12 12" fill="currentColor"><rect x="2" y="2" width="8" height="8" rx="1.5"/></svg>
+        </button>
+      </div>
+      <div id="board-kanban">
+        <div class="kanban-cols" id="kanban-cols"></div>
+      </div>
+      <div id="board-list" style="display:none"></div>
+    </div>
+  </div>
+</div>
+<!-- ADD TASK MODAL -->
+<div class="modal-overlay" id="modal" onclick="e => { if(e.target===this) closeModal(); }">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h2>Lisa uus ülesanne</h2>
+    <div class="form-group">
+      <label class="form-label">Pealkiri</label>
+      <input class="form-input" type="text" id="new-title" placeholder="Mida on vaja teha?">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Kategooria</label>
+        <select class="form-select" id="new-cat">
+          <option value="tellimus">Tellimus</option>
+          <option value="mess">Mess / turg</option>
+          <option value="idee">Idee</option>
+          <option value="haldus">Haldus</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Prioriteet</label>
+        <select class="form-select" id="new-priority">
+          <option value="high">Kõrge</option>
+          <option value="med" selected>Keskmine</option>
+          <option value="low">Madal</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Tähtaeg</label>
+        <input class="form-input" type="date" id="new-due">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Veerg</label>
+        <select class="form-select" id="new-col">
+          <option value="0">Ideed</option>
+          <option value="1">Teha</option>
+          <option value="2">Pooleli</option>
+          <option value="3">Ülevaatus</option>
+          <option value="4">Valmis</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal()">Tühista</button>
+      <button class="btn primary" onclick="addTask()">Lisa ülesanne</button>
+    </div>
+  </div>
+</div>
+<script>
+const CATS = {
+  tellimus: { label: 'Tellimus' },
+  mess: { label: 'Mess' },
+  idee: { label: 'Idee' },
+  haldus: { label: 'Haldus' }
+};
+const COLS = ['Ideed', 'Teha', 'Pooleli', 'Ülevaatus', 'Valmis'];
+const COL_STRIPES = ['#6B5FCF', '#C17F3B', '#E0872A', '#0F6E56', '#1B8F6A'];
+const COL_HEADER_BG = ['#EEEDFE', '#F5E8D4', '#FAEEDA', '#E0F4EE', '#D4EDDA'];
+const COL_HEADER_BORDER = ['#C5C0F0', '#F0C98A', '#F5C97A', '#9FE1CB', '#A0D9B0'];
+let tasks = [
+  { id:1, title:'Klaaskarp Mari jaoks', cat:'tellimus', col:0, due:'2025-04-10', urgent:true, priority:'high', timer:4820, img:'https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400&q=80' },
+  { id:2, title:'Makramee seemned tellida', cat:'haldus', col:0, due:'2025-04-12', urgent:false, priority:'med', timer:0 },
+  { id:3, title:'Instagrami postitused nädalaks', cat:'haldus', col:0, due:'2025-04-08', urgent:true, priority:'high', timer:0 },
+  { id:4, title:'Tallinna käsitöömess — stend', cat:'mess', col:1, due:'2025-04-15', urgent:false, priority:'med', timer:2700 },
+  { id:5, title:'Uus tehnika — niidikatse', cat:'idee', col:1, due:'', urgent:false, priority:'low', timer:0, img:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80' },
+  { id:6, title:'Hinnakiri uuendada', cat:'haldus', col:1, due:'2025-04-11', urgent:false, priority:'med', timer:0 },
+  { id:7, title:'Tellimus nr 042 pakendamine', cat:'tellimus', col:2, due:'2025-04-07', urgent:false, priority:'med', timer:5400, img:'https://images.unsplash.com/photo-1607344645866-009c320b63e0?w=400&q=80' },
+  { id:8, title:'Roosade õied — uus värv', cat:'idee', col:2, due:'', urgent:false, priority:'low', timer:1200, img:'https://images.unsplash.com/photo-1490750967868-88df5691cc54?w=400&q=80' },
+];
+let nextId = 9;
+let activeFilter = 'all';
+let searchQ = '';
+let currentView = 'kanban';
+// Timer state
+let timerTaskId = null;
+let timerRunning = false;
+let timerSeconds = 0;
+let timerInterval = null;
+function fmtTimer(s) {
+  const h = Math.floor(s/3600);
+  const m = Math.floor((s%3600)/60);
+  const sec = s%60;
+  if(h>0) return `${h}:${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+}
+function startTimerFor(id) {
+  const t = tasks.find(t=>t.id===id);
+  if(!t) return;
+  timerTaskId = id;
+  timerSeconds = t.timer;
+  timerRunning = true;
+  document.getElementById('timer-task-name').textContent = t.title;
+  document.getElementById('timer-display').textContent = fmtTimer(timerSeconds);
+  document.getElementById('timer-widget').style.display = 'flex';
+  clearInterval(timerInterval);
+  timerInterval = setInterval(()=>{
+    if(timerRunning){ timerSeconds++; tasks.find(t=>t.id===timerTaskId).timer=timerSeconds; document.getElementById('timer-display').textContent=fmtTimer(timerSeconds); }
+  },1000);
+}
+function toggleTimer(){
+  timerRunning=!timerRunning;
+  const btn=document.getElementById('timer-toggle-btn');
+  const icon=document.getElementById('timer-icon');
+  btn.classList.toggle('running',timerRunning);
+  icon.innerHTML=timerRunning
+    ? '<rect x="2" y="2" width="3" height="8" rx="1"/><rect x="7" y="2" width="3" height="8" rx="1"/>'
+    : '<polygon points="2,2 10,6 2,10"/>';
+}
+function stopTimer(){
+  timerRunning=false; clearInterval(timerInterval);
+  document.getElementById('timer-widget').style.display='none';
+  timerTaskId=null;
+}
+function setView(v){
+  currentView=v;
+  document.getElementById('btn-kanban').classList.toggle('active',v==='kanban');
+  document.getElementById('btn-list').classList.toggle('active',v==='list');
+  document.getElementById('board-kanban').style.display=v==='kanban'?'block':'none';
+  document.getElementById('board-list').style.display=v==='list'?'block':'none';
+  render();
+}
+function filterBy(cat, el){
+  activeFilter=cat;
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  render();
+}
+function searchTasks(q){ searchQ=q.toLowerCase(); render(); }
+function visibleTasks(){
+  return tasks.filter(t=>{
+    if(activeFilter!=='all' && t.cat!==activeFilter) return false;
+    if(searchQ && !t.title.toLowerCase().includes(searchQ)) return false;
+    return true;
+  });
+}
+function fmtDue(due){
+  if(!due) return '';
+  const d=new Date(due);
+  return `${d.getDate()}. ${['jaan','veebr','märts','apr','mai','juuni','juuli','aug','sept','okt','nov','dets'][d.getMonth()]}`;
+}
+function cardHtml(t){
+  const dueStr=fmtDue(t.due);
+  const isUrgent=t.urgent;
+  const timerStr=t.timer>0?fmtTimer(t.timer):'';
+  const doneCls = t.col===4 ? 'done-text' : '';
+  const showThumb = currentView==='kanban' && t.img && (t.cat==='tellimus'||t.cat==='idee');
+  return `<div class="task-card" data-cat="${t.cat}" data-id="${t.id}">
+    ${showThumb ? `<img class="card-thumb" src="${t.img}" alt="${t.title}" loading="lazy">` : ''}
+    <div class="card-title ${doneCls}">${t.title}</div>
+    <div class="card-meta">
+      <span class="cat-pill" data-cat="${t.cat}">${CATS[t.cat].label}</span>
+      ${dueStr?`<span class="due-badge${isUrgent?' urgent':''}">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M6 4v2.5l1 1"/></svg>
+        ${dueStr}
+      </span>`:''}
+      ${timerStr?`<span class="timer-badge" onclick="event.stopPropagation();startTimerFor(${t.id})" title="Käivita taimer">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M6 4v2l1 1"/></svg>
+        ${timerStr}
+      </span>`:`<span class="timer-badge" onclick="event.stopPropagation();startTimerFor(${t.id})" title="Alusta taimeri" style="cursor:pointer;opacity:0.5">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="2,2 10,6 2,10"/></svg>
+        Start
+      </span>`}
+      <span class="priority-dot p-${t.priority}" title="Prioriteet: ${t.priority}"></span>
+    </div>
+  </div>`;
+}
+function render(){
+  const vis=visibleTasks();
+  updateStats(vis);
+  if(currentView==='kanban'){
+    document.getElementById('kanban-cols').innerHTML=COLS.map((col,ci)=>{
+      const colTasks=vis.filter(t=>t.col===ci);
+      return `<div class="kanban-col">
+        <div class="col-header" style="background:${COL_HEADER_BG[ci]};border-bottom-color:${COL_HEADER_BORDER[ci]}">
+          <div class="col-stripe" style="background:${COL_STRIPES[ci]}"></div>
+          <div class="col-title">${col}</div>
+          <div class="col-count">${colTasks.length}</div>
+        </div>
+        <div class="col-body">
+          ${colTasks.map(t=>cardHtml(t)).join('')}
+          <button class="add-task-btn" onclick="openModalCol(${ci})">+ lisa ülesanne</button>
+        </div>
+      </div>`;
+    }).join('');
+  } else {
+    const groups = [
+      { label: 'Uus', color: '#6B5FCF', bg: '#EEEDFE', tasks: vis.filter(t=>t.col<=1) },
+      { label: 'Töös', color: '#E0872A', bg: '#FAEEDA', tasks: vis.filter(t=>t.col===2||t.col===3) },
+      { label: 'Valmis', color: '#1B8F6A', bg: '#D4EDDA', tasks: vis.filter(t=>t.col===4) },
+    ];
+    document.getElementById('board-list').innerHTML = groups.map(g=>`
+      <div style="margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="display:inline-block;padding:3px 12px;border-radius:999px;background:${g.bg};color:${g.color};font-size:11.5px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase">${g.label}</span>
+          <span style="font-size:11px;color:var(--text-hint)">${g.tasks.length} ülesannet</span>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+          ${g.tasks.length===0
+            ? `<div style="padding:14px 16px;font-size:12.5px;color:var(--text-hint);text-align:center">Ülesandeid pole</div>`
+            : g.tasks.map((t,i)=>`
+          <div style="display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:${i<g.tasks.length-1?'1px solid var(--border)':'none'};background:var(--surface)">
+            <div style="width:3px;height:32px;border-radius:2px;background:var(--cat-${t.cat==='tellimus'?'order':t.cat==='mess'?'fair':t.cat==='idee'?'idea':'admin'});flex-shrink:0"></div>
+            <div style="flex:1">
+              <div style="font-size:13.5px;font-weight:500;color:var(--text);${t.col===4?'text-decoration:line-through;color:var(--text-hint)':''}">${t.title}</div>
+              <div style="display:flex;gap:5px;margin-top:3px">
+                <span class="cat-pill" data-cat="${t.cat}">${CATS[t.cat].label}</span>
+                ${t.due?`<span class="due-badge${t.urgent?' urgent':''}">${fmtDue(t.due)}</span>`:''}
+              </div>
+            </div>
+            <span style="font-size:11px;background:var(--surface2);color:var(--text-hint);padding:3px 10px;border-radius:999px;border:1px solid var(--border)">${COLS[t.col]}</span>
+            <span class="priority-dot p-${t.priority}"></span>
+            <button class="timer-btn" onclick="startTimerFor(${t.id})" title="Käivita taimer" style="flex-shrink:0">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="4"/><path d="M6 4v2l1 1"/></svg>
+            </button>
+          </div>`).join('')}
+        </div>
+      </div>`).join('');
+  }
+}
+function updateStats(vis){
+  document.getElementById('stat-total').textContent=tasks.length;
+  document.getElementById('stat-wip').textContent=tasks.filter(t=>t.col===2).length;
+  document.getElementById('stat-urgent').textContent=tasks.filter(t=>t.urgent).length;
+  document.getElementById('stat-done').textContent=tasks.filter(t=>t.col===4).length;
+}
+let modalTargetCol = 0;
+function openModal(){ modalTargetCol=0; document.getElementById('modal').classList.add('open'); document.getElementById('new-title').focus(); }
+function openModalCol(c){ modalTargetCol=c; document.getElementById('new-col').value=c; openModal(); }
+function closeModal(){ document.getElementById('modal').classList.remove('open'); }
+function addTask(){
+  const title=document.getElementById('new-title').value.trim();
+  if(!title) return;
+  tasks.push({
+    id:nextId++,
+    title,
+    cat:document.getElementById('new-cat').value,
+    col:parseInt(document.getElementById('new-col').value),
+    due:document.getElementById('new-due').value,
+    urgent:false,
+    priority:document.getElementById('new-priority').value,
+    timer:0
+  });
+  closeModal();
+  document.getElementById('new-title').value='';
+  render();
+}
+document.getElementById('modal').addEventListener('click', function(e){
+  if(e.target===this) closeModal();
+});
+function toggleTheme(){
+  const isDark = document.body.classList.toggle('dark');
+  const icon = document.getElementById('theme-icon');
+  if(isDark){
+    icon.innerHTML = '<path d="M10.5 7A4.5 4.5 0 0 1 6 2.5a4.5 4.5 0 1 0 4.5 4.5z" fill="currentColor" stroke="none"/>';
+  } else {
+    icon.innerHTML = '<circle cx="7" cy="7" r="2.5"/><path d="M7 1v1.5M7 11.5V13M1 7h1.5M11.5 7H13M3 3l1 1M10 10l1 1M11 3l-1 1M4 10l-1 1"/>';
+  }
+}
+render();
+</script>
 </body>
 </html>
