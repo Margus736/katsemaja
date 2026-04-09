@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eva Raudkivi | "Pojengipiiga"</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<nav class="nav" id="top">
+  <div class="nav__inner">
+    <a class="nav__logo" href="index.html">Eva Raudkivi</a>
+    <div class="nav__center">
+      <ul class="nav__links">
+        <li><a class="nav__link" href="index.html#portfolio" data-et="Portfolio" data-en="Portfolio">Portfolio</a></li>
+        <li><a class="nav__link" href="index.html#about" data-et="Minust" data-en="About Me">Minust</a></li>
+        <li><a class="nav__link" href="index.html#calendar" data-et="Laadakalender" data-en="Fair Calendar">Laadakalender</a></li>
+        <li><a class="nav__link" href="index.html#contact" data-et="Kontakt" data-en="Contact">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="nav__right">
+      <div class="lang-switcher" role="group" aria-label="Keelevalik / Language">
+        <button class="lang-btn lang-btn--active" id="btnEt" onclick="setLang('et')" aria-pressed="true">ET</button>
+        <button class="lang-btn" id="btnEn" onclick="setLang('en')" aria-pressed="false">EN</button>
+      </div>
+      <button class="nav__burger" id="burgerBtn" aria-label="Ava menüü">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </div>
+  <div class="nav__mobile" id="mobileMenu">
+    <a class="nav__link" href="index.html#portfolio" data-et="Portfolio" data-en="Portfolio">Portfolio</a>
+    <a class="nav__link" href="index.html#about" data-et="Minust" data-en="About Me">Minust</a>
+    <a class="nav__link" href="index.html#calendar" data-et="Laadakalender" data-en="Fair Calendar">Laadakalender</a>
+    <a class="nav__link" href="index.html#contact" data-et="Kontakt" data-en="Contact">Kontakt</a>
+    <div class="lang-switcher" role="group">
+      <button class="lang-btn lang-btn--active" id="btnEtMob" onclick="setLang('et')">ET</button>
+      <button class="lang-btn" id="btnEnMob" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <div class="subpage-back">
+    <div class="subpage-back__inner">
+      <a class="subpage-back__link" href="index.html#portfolio">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span data-et="Kõik kollektsioonid" data-en="All collections">Kõik kollektsioonid</span>
+      </a>
+      <a class="subpage-back__contact" href="index.html#contact">
+        <span class="material-symbols-outlined">mail</span>
+        <span data-et="Telli sarnane" data-en="Request similar">Telli sarnane</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="subpage-hero">
+    <div class="subpage-hero__inner">
+      <span class="subpage-hero__category" data-et="Keraamika" data-en="Ceramics">Keraamika</span>
+      <h1 class="subpage-hero__title">"Pojengipiiga"</h1>
+      <p class="subpage-hero__desc"
+         data-et="Õrnus ja õitsemine savis. Iga kuju on käsitsi voolitud ja glasuuritud, kandes endas peente õite ja poeesia hõngu."
+         data-en="Tenderness and blossoming in clay. Each figure is hand-formed and glazed, carrying the scent of delicate flowers and poetry."></p>
+      <p class="subpage-hero__count">6 tööd</p>
+    </div>
+  </section>
+
+  <section class="subpage-gallery">
+    <div class="subpage-gallery__inner">
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" onclick="openLightbox('pojengipiiga/01.jpg', '01.jpg')">
+          <img src="pojengipiiga/01.jpg" alt="01.jpg" loading="lazy"/>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('pojengipiiga/02.jpg', '02.jpg')">
+          <img src="pojengipiiga/02.jpg" alt="02.jpg" loading="lazy"/>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('pojengipiiga/03.jpg', '03.jpg')">
+          <img src="pojengipiiga/03.jpg" alt="03.jpg" loading="lazy"/>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('pojengipiiga/04.jpg', '04.jpg')">
+          <img src="pojengipiiga/04.jpg" alt="04.jpg" loading="lazy"/>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('pojengipiiga/05.jpg', '05.jpg')">
+          <img src="pojengipiiga/05.jpg" alt="05.jpg" loading="lazy"/>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('pojengipiiga/06.jpg', '06.jpg')">
+          <img src="pojengipiiga/06.jpg" alt="06.jpg" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="subpage-actions">
+    <div class="subpage-actions__inner">
+      <h2 class="subpage-actions__title"
+          data-et="Meeldis midagi?" data-en="Did something catch your eye?">Meeldis midagi?</h2>
+      <p class="subpage-actions__desc"
+         data-et="Kirjuta mulle — voolime koos midagi sinu jaoks erilist."
+         data-en="Write to me — let's create something special just for you."></p>
+      <div class="subpage-actions__btns">
+        <a class="btn-primary" href="index.html#contact">
+          <span data-et="Kirjuta mulle" data-en="Get in touch">Kirjuta mulle</span>
+        </a>
+        <a class="btn-secondary" href="index.html#portfolio">
+          <span class="material-symbols-outlined">grid_view</span>
+          <span data-et="Kõik kollektsioonid" data-en="All collections">Kõik kollektsioonid</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <span class="footer__logo">Eva Raudkivi</span>
+      <p class="footer__copy">© 2024 Eva Raudkivi. Handcrafted with soul.</p>
+    </div>
+    <ul class="footer__links">
+      <li><a class="footer__link" href="https://www.instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a class="footer__link" href="https://www.pinterest.com" target="_blank" rel="noopener">Pinterest</a></li>
+      <li><a class="footer__link" href="https://www.etsy.com" target="_blank" rel="noopener">Etsy</a></li>
+      <li><a class="footer__link" href="index.html#contact" data-et="Kontakt" data-en="Contact">Kontakt</a></li>
+    </ul>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__close" onclick="closeLightbox()" aria-label="Sulge">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <img class="lightbox__img" id="lightboxImg" src="" alt=""/>
+</div>
+
+<script>
+let currentLang = localStorage.getItem('eva-lang') || 'et';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('eva-lang', lang);
+  applyLang();
+}
+
+function applyLang() {
+  const lang = currentLang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-et][data-en]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (!val) return;
+    el.textContent = val;
+  });
+  ['Et','En'].forEach(l => {
+    const lower = l.toLowerCase();
+    ['btn'+l, 'btn'+l+'Mob'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (!btn) return;
+      btn.classList.toggle('lang-btn--active', lower === lang);
+      btn.setAttribute('aria-pressed', lower === lang ? 'true' : 'false');
+    });
+  });
+  document.title = lang === 'et'
+    ? 'Eva Raudkivi | "Pojengipiiga"'
+    : 'Eva Raudkivi | "Pojengipiiga"';
+}
+
+applyLang();
+
+const burger = document.getElementById('burgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const burgerIcon = burger.querySelector('.material-symbols-outlined');
+burger.addEventListener('click', () => {
+  const isOpen = mobileMenu.classList.toggle('is-open');
+  burgerIcon.textContent = isOpen ? 'close' : 'menu';
+});
+
+function openLightbox(src, alt) {
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightboxImg').alt = alt || '';
+  document.getElementById('lightbox').classList.add('is-open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('is-open');
+  document.body.style.overflow = '';
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
