@@ -51,7 +51,7 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 body {
   font-family: var(--font-body);
   background-color: var(--background);
@@ -129,7 +129,7 @@ a { text-decoration: none; color: inherit; }
   color: var(--primary); font-weight: 500;
   border-bottom: 2px solid var(--primary); padding-bottom: 0.2rem;
 }
-.nav__burger { display: none; background: none; border: none; cursor: pointer; color: var(--on-surface); }
+.nav__burger { display: none; background: none; border: none; cursor: pointer; color: var(--on-surface); font-size: 2rem; padding: 0.25rem; line-height: 1; }
 .nav__mobile {
   display: none; flex-direction: column; gap: 1.5rem;
   padding: 1.5rem 3rem;
@@ -615,6 +615,8 @@ a { text-decoration: none; color: inherit; }
   .nav__links { display: none; }
   .nav__right .lang-switcher { display: none; }
   .nav__burger { display: block; }
+  .nav__inner { padding: 1.25rem 1.5rem; }
+  .nav__logo img { max-width: min(25rem, 70vw); }
 
   .hero__content { padding: 0 1.5rem; }
   .hero__box { padding: 2rem; }
