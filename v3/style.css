@@ -66,8 +66,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   padding: 0 1.5rem;
   display: flex; align-items: center; justify-content: space-between;
 }
-.nav__logo { display: flex; flex-direction: column; line-height: 1.1; }
-.nav__logo-name { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: -0.03em; color: var(--dark); }
+.nav__logo { display: flex; flex-direction: column; line-height: 1.5; }
+.nav__logo-name { font-family: var(--font-display); font-size: 2.2rem; letter-spacing: -0.03em; color: var(--dark); }
 .nav__logo-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 0.3em; opacity: 0.55; margin-left: 0.15rem; }
 
 .nav__menu { display: none; align-items: center; gap: 3rem; }
@@ -192,7 +192,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   font-weight: 400; line-height: 1.2; color: var(--dark);
 }
 .section__title em { font-style: italic; }
-.section__intro { font-size: 1rem; opacity: 0.6; font-weight: 300; line-height: 1.7; max-width: 20rem; }
+.section__intro { font-size: 1rem; opacity: 0.6; font-weight: 300; line-height: 1.7; max-width: 30rem; }
 
 /* ===========================
    SERVICE CARDS
@@ -683,4 +683,3 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   }
   .teenused-item__arrow { display: none; }
 }
-
