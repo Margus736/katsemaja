@@ -1,1 +1,894 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NordicStyle Studio OÜ – Väikeettevõtete raamatupidamine</title>
+  <meta name="description" content="NordicStyle Studio OÜ pakub professionaalset raamatupidamisteenust väikeettevõtetele Tallinnas. MERIT Aktiva tarkvara. Raamatupidaja Eve Malva, 6. taseme spetsialist.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<!-- ===================== NAVIGATION ===================== -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo" onclick="showPage('koduleht'); return false;">
+      <span class="nav__logo-name">NordicStyle Studio</span>
+      <span class="nav__logo-sub">Väikeettevõtete raamatupidamine</span>
+    </a>
+
+    <ul class="nav__menu">
+      <li class="nav__item">
+        <a class="nav__link" href="#" onclick="showPage('teenused'); return false;">Teenused</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="#" onclick="showPage('hinnakiri'); return false;">Hinnakiri</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link" href="#" onclick="showPage('ettevottest'); return false;">Ettevõttest</a>
+      </li>
+      <li class="nav__item">
+        <a class="nav__link nav__cta" href="#" onclick="showPage('kontakt'); return false;">Võta ühendust</a>
+      </li>
+    </ul>
+
+    <button class="nav__hamburger" id="hamburger" aria-label="Menüü">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="nav__mobile" id="mobileMenu">
+  <button class="nav__mobile-close" id="mobileClose" aria-label="Sulge menüü">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="nav__mobile-links">
+    <a class="nav__mobile-link" href="#" onclick="showPage('koduleht'); closeMobile(); return false;">Koduleht</a>
+    <a class="nav__mobile-link" href="#" onclick="showPage('teenused'); closeMobile(); return false;">Teenused</a>
+    <a class="nav__mobile-link" href="#" onclick="showPage('hinnakiri'); closeMobile(); return false;">Hinnakiri</a>
+    <a class="nav__mobile-link" href="#" onclick="showPage('ettevottest'); closeMobile(); return false;">Ettevõttest</a>
+    <a class="nav__mobile-cta" href="#" onclick="showPage('kontakt'); closeMobile(); return false;">Võta ühendust</a>
+  </nav>
+</div>
+
+
+<!-- ==================== PAGE: KODULEHT ==================== -->
+<div id="koduleht" class="page active">
+
+  <section class="hero">
+    <div class="content hero__grid">
+      <div class="hero__content fade-up">
+        <div class="hero__badge">Tallinn · Merit Aktiva · 6. taseme raamatupidaja</div>
+        <h1 class="hero__title">Selge raamatupidamine, <em>rahulik meel</em></h1>
+        <p class="hero__desc">NordicStyle Studio OÜ on Sulle abiks, et saaksid südamerahuga pühenduda oma käsitööle. Meie hoiame Sinu raamatupidamise, maksuarvestuse ja aruanded korras. Aitame Sul mõista Sinu loomingu tegelikku omahinda ja tasuvust ning planeerida rahavoogusid nii, et ettevõte oleks jätkusuutlik. Aitame Su meistriteostel jõuda maailma ehk haldame Sinu kaunist veebikodu või e-poodi. Sinu brändi aitavad nähtavaks muuta sihtgrupile suunatud sotsiaalmeedia ning läbimõeldud Meta reklaamid. Oleme Sinu usaldusväärne partner, pakkudes tuge nii finantsides kui ka digiturunduses ja SEO-s, et Sinu hobi kasvaks edukaks äriks.</p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#" onclick="showPage('kontakt'); return false;">Broneeri konsultatsioon</a>
+          <a class="btn btn--outline" href="#" onclick="showPage('teenused'); return false;">Vaata teenuseid</a>
+        </div>
+      </div>
+      <div class="hero__image-wrap fade-up delay-2">
+        <div class="hero__image">
+          <img src="images/esipilt.png" alt="Hubane töökeskkond – sülearvuti, teetass ja villane kampsun puitlaual" />
+        </div>
+        <div class="hero__image-deco"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="content">
+
+    <div class="trust" style="display:none">
+      <div class="trust__item">
+        <span class="trust__number">10+</span>
+        <span class="trust__label">aastat kogemust</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__number">6.</span>
+        <span class="trust__label">kutsekvalifikatsiooni tase</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__number">50+</span>
+        <span class="trust__label">rahulolunut klienti</span>
+      </div>
+      <div class="trust__item">
+        <span class="trust__number">Merit</span>
+        <span class="trust__label">Aktiva sertifitseeritud</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <span class="section__label">Mida me teeme</span>
+      <h2 class="section__title">Teenused <em>väikeettevõttele</em></h2>
+      <p class="section__intro" style="margin-top:1rem;">Pakume täisteenust – alates igapäevastest raamatupidamistöödest kuni majandusaasta aruande koostamise ja maksunõustamiseni.</p>
+
+      <div class="services-grid">
+        <div class="service-card fade-up delay-1" onclick="showPage('raamatupidamine')">
+          <div class="service-card__icon service-card__icon--blue">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <h3 class="service-card__title">Raamatupidamine</h3>
+          <p class="service-card__desc">Igakuine raamatupidamine, algdokumentide töötlus, palgarvestus ja aruandlus MERIT Aktiva tarkvaraga.</p>
+          <span class="service-card__link">Loe lähemalt →</span>
+          <div class="service-card__bar"></div>
+        </div>
+        <div class="service-card fade-up delay-2" onclick="showPage('maksuarvestus')">
+          <div class="service-card__icon service-card__icon--rose">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <h3 class="service-card__title">Maksuarvestus</h3>
+          <p class="service-card__desc">TSD, KMD ja muude maksudeklaratsioonide koostamine ja esitamine tähtaegselt maksu- ja tolliametile.</p>
+          <span class="service-card__link">Loe lähemalt →</span>
+          <div class="service-card__bar"></div>
+        </div>
+        <div class="service-card fade-up delay-3" onclick="showPage('aruanded')">
+          <div class="service-card__icon service-card__icon--taupe">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8v8M12 11v5M8 14v2M4 20h16a2 2 0 002-2V6a2 2 0 00-2-2H4a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="service-card__title">Majandusaasta aruanne</h3>
+          <p class="service-card__desc">Aastaaruande koostamine ja esitamine äriregistrile. Bilanss, kasumiaruanne, selgitused.</p>
+          <span class="service-card__link">Loe lähemalt →</span>
+          <div class="service-card__bar"></div>
+        </div>
+        <div class="service-card fade-up delay-1" onclick="showPage('noustamine')">
+          <div class="service-card__icon service-card__icon--light">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </div>
+          <h3 class="service-card__title">Nõustamine</h3>
+          <p class="service-card__desc">Finants- ja maksunõustamine, ettevõtte asutamise tugi, raamatupidamise korralduse analüüs.</p>
+          <span class="service-card__link">Loe lähemalt →</span>
+          <div class="service-card__bar"></div>
+        </div>
+
+        <div class="service-card fade-up delay-2" onclick="showPage('epood')">
+          <div class="service-card__icon service-card__icon--blue">
+            <!-- ShoppingBag -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </div>
+          <h3 class="service-card__title">E-poodide haldus ja loomine</h3>
+          <p class="service-card__desc">WooCommerce ja Etsy e-poodide loomine, seadistamine ja igapäevane haldus. Teie veebipood töötab sujuvalt.</p>
+          <span class="service-card__link">Loe lähemalt →</span>
+          <div class="service-card__bar"></div>
+        </div>
+      </div>
+
+      <div class="merit-badge">
+        <svg class="merit-badge__icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        <div class="merit-badge__text">
+          <h3>MERIT Aktiva raamatupidamissüsteem</h3>
+          <p>Kasutame Eesti populaarseimat väikeettevõtete raamatupidamissüsteemi MERIT Aktiva, mis tagab läbipaistvuse, kiirusja reaalajas ülevaate teie ettevõtte finantsseisust. Soovi korral saate ka ise vaadata oma andmeid.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="content">
+      <div class="footer__inner">
+        <span class="footer__brand">NordicStyle Studio OÜ</span>
+        <div class="footer__links">
+          <a href="#" onclick="showPage('teenused'); return false;">Teenused</a>
+          <a href="#" onclick="showPage('ettevottest'); return false;">Ettevõttest</a>
+          <a href="#" onclick="showPage('kontakt'); return false;">Kontakt</a>
+        </div>
+        <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+<!-- ==================== PAGE: TEENUSED (overview) ==================== -->
+<div id="teenused" class="page">
+
+  <!-- Hero-laadne päis koos pildiga -->
+  <div class="teenused-hero">
+    <div class="content teenused-hero__grid">
+      <div class="teenused-hero__content">
+        <div class="hero__badge">Kõik teenused ühes kohas</div>
+        <h1 class="teenused-hero__title">Meie <em>teenused</em></h1>
+        <p class="teenused-hero__desc">Kõik raamatupidamisega seotud teenused ühe katuse all. Lihtsalt ja läbipaistvalt, MERIT Aktiva tarkvaral.</p>
+        <a class="btn btn--primary" href="#" onclick="showPage('hinnakiri'); return false;">Vaata baashinnakirja</a>
+      </div>
+      <div class="teenused-hero__image-wrap">
+        <div class="teenused-hero__image">
+          <img src="images/teenused.png" alt="Teenused" onerror="this.parentElement.style.background='linear-gradient(160deg,rgba(193,211,221,0.4) 0%,rgba(225,202,195,0.4) 100%)'">
+        </div>
+        <div class="teenused-hero__image-deco"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teenuste loend -->
+  <div class="content">
+    <div class="teenused-list">
+
+      <div class="teenused-item" onclick="showPage('raamatupidamine')">
+        <div class="teenused-item__num">01</div>
+        <div class="teenused-item__body">
+          <h2 class="teenused-item__title">Raamatupidamine</h2>
+          <p class="teenused-item__desc">Igakuine täismahus raamatupidamine: algdokumendid, palgarvestus, aruandlus MERIT Aktiva tarkvaraga.</p>
+        </div>
+        <span class="teenused-item__arrow">→</span>
+      </div>
+
+      <div class="teenused-item" onclick="showPage('maksuarvestus')">
+        <div class="teenused-item__num">02</div>
+        <div class="teenused-item__body">
+          <h2 class="teenused-item__title">Maksuarvestus &amp; Deklaratsioonid</h2>
+          <p class="teenused-item__desc">Kõik maksudeklaratsioonid – TSD, KMD ja muud – koostame ja esitame tähtaegselt teie eest.</p>
+        </div>
+        <span class="teenused-item__arrow">→</span>
+      </div>
+
+      <div class="teenused-item" onclick="showPage('aruanded')">
+        <div class="teenused-item__num">03</div>
+        <div class="teenused-item__body">
+          <h2 class="teenused-item__title">Majandusaasta aruanded</h2>
+          <p class="teenused-item__desc">Aastaaruannete professionaalne koostamine ja esitamine äriregistrile õigeaegselt.</p>
+        </div>
+        <span class="teenused-item__arrow">→</span>
+      </div>
+
+      <div class="teenused-item" onclick="showPage('noustamine')">
+        <div class="teenused-item__num">04</div>
+        <div class="teenused-item__body">
+          <h2 class="teenused-item__title">Nõustamine</h2>
+          <p class="teenused-item__desc">Finants- ja maksunõustamine, ettevõtte asutamise tugi, raamatupidamise korralduse analüüs.</p>
+        </div>
+        <span class="teenused-item__arrow">→</span>
+      </div>
+
+      <div class="teenused-item" onclick="showPage('epood')">
+        <div class="teenused-item__num">05</div>
+        <div class="teenused-item__body">
+          <h2 class="teenused-item__title">E-poodide haldus ja loomine</h2>
+          <p class="teenused-item__desc">WooCommerce ja Etsy poodide loomine, seadistamine ja igapäevane haldus.</p>
+        </div>
+        <span class="teenused-item__arrow">→</span>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <div class="footer__links">
+      <a href="#" onclick="showPage('ettevottest'); return false;">Ettevõttest</a>
+      <a href="#" onclick="showPage('kontakt'); return false;">Kontakt</a>
+    </div>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== PAGE: RAAMATUPIDAMINE ==================== -->
+<div id="raamatupidamine" class="page">
+  <div class="content">
+    <div class="service-detail">
+      <div class="service-detail__header">
+        <div class="service-detail__header-grid">
+          <div class="service-detail__header-content">
+            <a class="service-detail__back" href="#" onclick="showPage('teenused'); return false;">← Tagasi teenustele</a>
+            <h1 class="service-detail__title">Raamatupidamine</h1>
+            <p class="service-detail__intro">Pakume asjatundlikku ja paindlikku raamatupidamisteenust väikeettevõtetele. Meie pikaajaline kogemus ja pidev eneseandmine tagavad, et teie finantsarvestus on alati korrektne ja vastab seadustele. Ootame kliente igast valdkonnast – olgu tegu alles alustava väikeettevõtte või juba kogenud organisatsiooniga. Kasutame tänapäevaseid tööriistu nagu Merit Aktiva, Merit Palk ja CostPocket, mis muudavad andmevahetuse kiireks ja turvaliseks. Pakume täielikult paberivaba ja distantsilt toimivat teenust, säästes nii teie aega kui ka keskkonda.</p>
+          </div>
+          <div class="service-detail__header-image">
+            <img src="images/raamatupidamine.png" alt="Raamatupidamine" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+
+      <div class="service-features">
+        <div class="feature-item">
+          <h4 class="feature-item__title">Algdokumentide töötlus</h4>
+          <p class="feature-item__desc">Võtame vastu arved, lepingud ja muud dokumendid digitaalselt või paberil ning sisestame kõik kandid raamatupidamissüsteemi.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Palgarvestus</h4>
+          <p class="feature-item__desc">Palkade, puhkuste ja lisatasude arvestamine, palgalehtede koostamine ja töötajatele esitamine iga kuu tähtaegselt.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Pangaväljavõtted</h4>
+          <p class="feature-item__desc">Kõik pangakanded kajastatakse raamatupidamises korrektselt ning seotakse vastava dokumentatsiooniga.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Igakuine ülevaade</h4>
+          <p class="feature-item__desc">Iga kuu saate lühikese kokkuvõtte ettevõtte finantsseisust – tulud, kulud, maksukohustused.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">MERIT Aktiva juurdepääs</h4>
+          <p class="feature-item__desc">Soovi korral saate reaalajas vaadata oma ettevõtte andmeid MERIT Aktiva pilveportaalist igal ajal.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Elektrooniline suhtlus</h4>
+          <p class="feature-item__desc">Töötame peamiselt digitaalselt – e-post, pilveteenus. Kohtumised kokkuleppel Tallinnas.</p>
+        </div>
+      </div>
+
+      <div class="service-cta-box">
+        <div>
+          <h3>Huvitatud raamatupidamisteenusest?</h3>
+          <p>Kirjutage meile ja lepime kokku tasuta esialgse konsultatsiooni.</p>
+        </div>
+        <a class="btn btn--white" href="#" onclick="showPage('kontakt'); return false;">Võta ühendust</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== PAGE: MAKSUARVESTUS ==================== -->
+<div id="maksuarvestus" class="page">
+  <div class="content">
+    <div class="service-detail">
+      <div class="service-detail__header">
+        <div class="service-detail__header-grid">
+          <div class="service-detail__header-content">
+            <a class="service-detail__back" href="#" onclick="showPage('teenused'); return false;">← Tagasi teenustele</a>
+            <h1 class="service-detail__title">Maksuarvestus &amp; Deklaratsioonid</h1>
+            <p class="service-detail__intro">Eesti maksuseadustik on tihe ja tähtajad ranged. Meie hoolitseme kõigi deklaratsioonide õigeaegse esitamise eest, et te ei peaks muretsema trahvide ega viiviste pärast.</p>
+          </div>
+          <div class="service-detail__header-image">
+            <img src="images/maksuarvestus.png" alt="Maksuarvestus" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+
+      <div class="service-features">
+        <div class="feature-item">
+          <h4 class="feature-item__title">TSD – tulu- ja sotsiaalmaks</h4>
+          <p class="feature-item__desc">Töötajate tulu- ja sotsiaalmaksu deklaratsioon koostatakse ja esitatakse igakuiselt tähtaegselt MTA-le.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">KMD – käibemaksudeklaratsioon</h4>
+          <p class="feature-item__desc">Käibemaksukohustuslaste igakuine käibedeklaratsioon koos müügi- ja ostuarvetega.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">INF-deklaratsioonid</h4>
+          <p class="feature-item__desc">Erikontode ning erisoodustuste deklaratsioonide koostamine vastavalt kehtivatele nõuetele.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Tulumaksukohustuse arvutus</h4>
+          <p class="feature-item__desc">Dividendide, ettevõtluskulude ning muude maksukohustuste selgitamine ja arvestamine.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Maksusoodustused</h4>
+          <p class="feature-item__desc">Aitame tuvastada legaalsed võimalused ettevõtte maksukoorma optimeerimiseks.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Suhtlus MTA-ga</h4>
+          <p class="feature-item__desc">Vajadusel hoolitseme teie eest kirjavahetuse ja selgituste esitamise eest Maksu- ja Tolliametile.</p>
+        </div>
+      </div>
+
+      <div class="service-cta-box">
+        <div>
+          <h3>Küsimused maksude kohta?</h3>
+          <p>Selgitame välja, mis teile täpselt sobib. Esimene konsultatsioon on tasuta.</p>
+        </div>
+        <a class="btn btn--white" href="#" onclick="showPage('kontakt'); return false;">Küsi nõu</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== PAGE: ARUANDED ==================== -->
+<div id="aruanded" class="page">
+  <div class="content">
+    <div class="service-detail">
+      <div class="service-detail__header">
+        <div class="service-detail__header-grid">
+          <div class="service-detail__header-content">
+            <a class="service-detail__back" href="#" onclick="showPage('teenused'); return false;">← Tagasi teenustele</a>
+            <h1 class="service-detail__title">Majandusaasta aruanded</h1>
+            <p class="service-detail__intro">Majandusaasta aruanne on ettevõtte aastakokkuvõte, mis tuleb esitada äriregistrile. Koostame selle professionaalselt ja tähtaegselt, vastavalt Eesti raamatupidamisstandarditele.</p>
+          </div>
+          <div class="service-detail__header-image">
+            <img src="images/aruanded.png" alt="Majandusaasta aruanded" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+
+      <div class="service-features">
+        <div class="feature-item">
+          <h4 class="feature-item__title">Bilanss</h4>
+          <p class="feature-item__desc">Ettevõtte varade ja kohustuste koondülevaade majandusaasta lõpu seisuga, korrektses vormis.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Kasumiaruanne</h4>
+          <p class="feature-item__desc">Tulude ja kulude aruanne, mis näitab ettevõtte majandustegevuse tulemust terve aasta lõikes.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Rahavoogude aruanne</h4>
+          <p class="feature-item__desc">Ettevõtte raha liikumise ülevaade – kust tuli ja kuhu läks, äritegevus, investeerimine, finantseerimine.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Selgitused ja lisad</h4>
+          <p class="feature-item__desc">Aruandele kohustuslikud selgitused ning muud vajalikud lisad vastavalt EES nõuetele.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Esitamine äriregistrile</h4>
+          <p class="feature-item__desc">Koostame ja esitame aruande digiallkirjastatult äriregistrile seadusega ettenähtud tähtajal.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Selgitused omanikele</h4>
+          <p class="feature-item__desc">Tutvustame teile aruande sisu selges keeles – ilma keeruliste raamatupidamistermini üleujutuseta.</p>
+        </div>
+      </div>
+
+      <div class="service-cta-box">
+        <div>
+          <h3>Majandusaasta aruanne on lähenemas?</h3>
+          <p>Ärge jätke viimasele hetkele. Võtke ühendust juba täna.</p>
+        </div>
+        <a class="btn btn--white" href="#" onclick="showPage('kontakt'); return false;">Broneeri aeg</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== PAGE: NÕUSTAMINE ==================== -->
+<div id="noustamine" class="page">
+  <div class="content">
+    <div class="service-detail">
+      <div class="service-detail__header">
+        <div class="service-detail__header-grid">
+          <div class="service-detail__header-content">
+            <a class="service-detail__back" href="#" onclick="showPage('teenused'); return false;">← Tagasi teenustele</a>
+            <h1 class="service-detail__title">Nõustamine</h1>
+            <p class="service-detail__intro">Mõnikord ei pea te meil tervet raamatupidamist üle andma – piisab ühekordsest nõustamisest. Aitame lahendada konkreetseid finantsküsimusi, planeerida maksuarvestust või korraldada olemasolevat raamatupidamist.</p>
+          </div>
+          <div class="service-detail__header-image">
+            <img src="images/noustamine.png" alt="Nõustamine" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+
+      <div class="service-features">
+        <div class="feature-item">
+          <h4 class="feature-item__title">Ettevõtte asutamise nõustamine</h4>
+          <p class="feature-item__desc">Milline ettevõtlusvorm sobib? OÜ või FIE? Selgitame erinevused ja aitame valida parima lahenduse.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Raamatupidamise auditeerimine</h4>
+          <p class="feature-item__desc">Vaatame üle teie senise raamatupidamise, leiame vead ja anname soovitused olukorra parandamiseks.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Maksuplaneerimise nõustamine</h4>
+          <p class="feature-item__desc">Kuidas maksta seaduslikult vähem makse? Dividendid, töötasu, sõiduauto kasutus – anname selge ülevaate.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">MERIT Aktiva juhendamine</h4>
+          <p class="feature-item__desc">Kui soovite ise MERIT Aktivas töötada, õpetame süsteemi kasutama ja seadistame selle teie ettevõttele sobivaks.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Ühekordne konsultatsioon</h4>
+          <p class="feature-item__desc">Konkreetne küsimus? Broneeri üks tund, saame selgeks. Ideaalne neile, kes tahavad ise hakkama saada.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Finantsanalüüs</h4>
+          <p class="feature-item__desc">Aitame mõista, kuidas läheb teie ettevõttel – kasumlikkus, maksukoormuse optimaalsus, kasvuvõimalused.</p>
+        </div>
+      </div>
+
+      <div class="service-cta-box">
+        <div>
+          <h3>Teil on küsimus, meil on vastus</h3>
+          <p>Esimene 30-minutiline konsultatsioon on tasuta. Kirjutage julgelt.</p>
+        </div>
+        <a class="btn btn--white" href="#" onclick="showPage('kontakt'); return false;">Küsi nõu</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+
+<!-- ==================== PAGE: E-POOD ==================== -->
+<div id="epood" class="page">
+  <div class="content">
+    <div class="service-detail">
+      <div class="service-detail__header">
+        <div class="service-detail__header-grid">
+          <div class="service-detail__header-content">
+            <a class="service-detail__back" href="#" onclick="showPage('teenused'); return false;">← Tagasi teenustele</a>
+            <h1 class="service-detail__title">E-poodide haldus ja loomine</h1>
+            <p class="service-detail__intro">Aitame luua ja hallata professionaalseid e-poode WooCommerce'i ja Etsy platvormil. Tegeleme kõigega alates seadistamisest kuni igapäevase halduseni – teie ülesanne on müüa, meie hoolitseme tehnilise poole eest.</p>
+          </div>
+          <div class="service-detail__header-image">
+            <img src="images/epood.png" alt="E-poodide haldus ja loomine" onerror="this.style.display='none'">
+          </div>
+        </div>
+      </div>
+
+      <div class="service-features">
+        <div class="feature-item">
+          <h4 class="feature-item__title">WooCommerce poe loomine</h4>
+          <p class="feature-item__desc">Seadistame teie WordPressi veebisaidile täisfunktsionaalse WooCommerce poe – tootekataloog, makselahendused, tarneviisid ja kujundus vastavalt teie brändile.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">WooCommerce haldamine</h4>
+          <p class="feature-item__desc">Igapäevane poe haldus: toodete lisamine ja uuendamine, tellimuste jälgimine, hindade haldamine, varude arvestus ja klientidega suhtlus.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Etsy poe seadistamine</h4>
+          <p class="feature-item__desc">Loome teile professionaalse Etsy poe – poe kujundus, toodete fotod ja kirjeldused, märksõnade optimeerimine ja maksete seadistamine.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Etsy poe haldus</h4>
+          <p class="feature-item__desc">Toodete lisamine ja uuendamine, Etsy algoritmile optimeerimine, müügistatistika jälgimine ja poe aktiivsena hoidmine.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Maksete ja integratsioonide seadistamine</h4>
+          <p class="feature-item__desc">Pangalingid, kaardimaksed, PayPal ja muud makselahendused. Integreerume raamatupidamistarkvaraga, et müük kajastuks automaatselt teie raamatupidamises.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Tugi ja nõustamine</h4>
+          <p class="feature-item__desc">Juhendame teid e-poe toimimises ja anname nõu, kuidas müüki kasvatada. Oleme kättesaadavad, kui tekib küsimusi.</p>
+        </div>
+      </div>
+
+      <div class="service-cta-box">
+        <div>
+          <h3>Soovite e-poodi luua või haldamist üle anda?</h3>
+          <p>Räägime läbi teie vajadused ja leiame parima lahenduse.</p>
+        </div>
+        <a class="btn btn--white" href="#" onclick="showPage('kontakt'); return false;">Võta ühendust</a>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+<!-- ==================== PAGE: HINNAKIRI ==================== -->
+<div id="hinnakiri" class="page">
+
+  <!-- Hero-laadne päis koos pildiga -->
+  <div class="teenused-hero">
+    <div class="content teenused-hero__grid">
+      <div class="teenused-hero__content">
+        <div class="hero__badge">Läbipaistev ja aus hinnakiri</div>
+        <h1 class="teenused-hero__title">Baas<em>hinnakiri</em></h1>
+        <p class="teenused-hero__desc">Allpool on toodud orienteeruvad hinnad. Lõplik hind lepitakse kokku individuaalselt, lähtudes teie ettevõtte mahust, tehingute arvust ja vajalikest teenustest.</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+          <a class="btn btn--primary" href="#" onclick="showPage('kontakt'); return false;">Küsi hinnapakkumist</a>
+          <a class="service-detail__back" href="#" onclick="showPage('teenused'); return false;" style="margin:0;">← Tagasi teenustele</a>
+        </div>
+      </div>
+      <div class="teenused-hero__image-wrap">
+        <div class="teenused-hero__image">
+          <img src="images/hinnakiri.png" alt="Baashinnakiri" onerror="this.parentElement.style.background='linear-gradient(160deg,rgba(193,211,221,0.4) 0%,rgba(225,202,195,0.4) 100%)'">
+        </div>
+        <div class="teenused-hero__image-deco"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hinnakiri sisu -->
+  <div class="content">
+    <div class="service-detail" style="padding-top:0;">
+
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>Teenus</th>
+            <th>Kirjeldus</th>
+            <th>Hind (alates)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Baaspakkett</strong></td>
+            <td>Kuni 30 kannet kuus, palgarvestus kuni 2 töötajale, TSD, KMD</td>
+            <td class="price">120 € / kuu</td>
+          </tr>
+          <tr>
+            <td><strong>Standardpakkett</strong></td>
+            <td>31–80 kannet kuus, palgarvestus kuni 5 töötajale, kõik deklaratsioonid</td>
+            <td class="price">200 € / kuu</td>
+          </tr>
+          <tr>
+            <td><strong>Lauspakkett</strong></td>
+            <td>Üle 80 kande, palgarvestus kuni 10 töötajale, täismahus teenus</td>
+            <td class="price">alates 320 € / kuu</td>
+          </tr>
+          <tr>
+            <td><strong>Majandusaasta aruanne</strong></td>
+            <td>Koostamine ja esitamine äriregistrile (mikro- ja väikeettevõte)</td>
+            <td class="price">alates 200 €</td>
+          </tr>
+          <tr>
+            <td><strong>Nõustamine</strong></td>
+            <td>Ühekordne konsultatsioon (kuni 1 tund)</td>
+            <td class="price">75 € / tund</td>
+          </tr>
+          <tr>
+            <td><strong>MERIT Aktiva juhendamine</strong></td>
+            <td>Tarkvara seadistamine ja kasutajale õpetamine</td>
+            <td class="price">alates 90 €</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="price-note">* Kõik hinnad on ilma käibemaksuta. Hinnad on orienteeruvad ja sõltuvad ettevõtte mahust. Täpse hinnapakkumise saamiseks võtke ühendust – vaatame teie vajadused üle ja leiame parima lahenduse.</p>
+
+      <div style="margin-top:48px;">
+        <div class="service-cta-box">
+          <div>
+            <h3>Soovite hinnapakkumist?</h3>
+            <p>Võtke ühendust ja koostame individuaalse pakkumise teie ettevõtte vajadustest lähtuvalt.</p>
+          </div>
+          <a class="btn btn--white" href="#" onclick="showPage('kontakt'); return false;">Küsi pakkumist</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== PAGE: ETTEVÕTTEST ==================== -->
+<div id="ettevottest" class="page">
+  <div class="content">
+
+    <div class="about-grid">
+      <div class="about-portrait">
+        <div class="about-portrait__placeholder">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+			<img src="images/eve.png" alt="Hubane töökeskkond – sülearvuti, teetass ja villane kampsun puitlaual" />
+          </svg>
+          <span>Eve Malva</span>
+        </div>
+        <div class="about-portrait__badge">6. taseme raamatupidaja</div>
+      </div>
+
+      <div class="about-content">
+        <h2>Eve Malva</h2>
+        <p class="subtitle">Vandeaudiitor · NordicStyle Studio OÜ asutaja</p>
+        <p>Olen Eve Malva – 6. kutsekvalifikatsioonitaseme raamatupidaja, kes on spetsialiseerunud väikeettevõtete raamatupidamisele. Minu jaoks on oluline, et igal ettevõtjal oleks oma raamatutest selge ülevaade ja kindlustunne.</p>
+        <p>NordicStyle Studio OÜ sündis soovist pakkuda väikeettevõtetele professionaalset raamatupidamisteenust ilma suurte büroode bürokraatiata – isiklikult, paindlikult ja läbipaistvalt.</p>
+        <p>Töötan MERIT Aktiva raamatupidamissüsteemiga, mis on Eesti parimaid lahendusi väikeettevõtetele. See tagab täpse arvestuse, reaalajas ülevaate ja lihtsa koostöö.</p>
+
+        <ul class="cred-list">
+          <li class="cred-item">Kutsetunnistus: 6. taseme raamatupidaja (Eesti Raamatupidajate Kogu)</li>
+          <li class="cred-item">MERIT Aktiva sertifitseeritud kasutaja</li>
+          <li class="cred-item">Üle 10 aasta praktilise kogemuse väikeettevõtete raamatupidamises</li>
+          <li class="cred-item">Regulaarne täiendkoolitus maksuõiguse ja raamatupidamisstandardite alal</li>
+          <li class="cred-item">Büroo asub Tallinnas, teenindame kliente üle Eesti</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div class="section">
+      <p class="section__label">Meie põhimõtted</p>
+      <h2 class="section__title">Miks valida NordicStyle Studio?</h2>
+
+      <div class="service-features" style="margin: 3.5rem 0 0;">
+        <div class="feature-item">
+          <h4 class="feature-item__title">Läbipaistvus</h4>
+          <p class="feature-item__desc">Teate alati, mis seisus on teie raamatupidamine. Ei mingeid üllatusi ega varjatud tasusid.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Isiklik lähenemine</h4>
+          <p class="feature-item__desc">Tegelete alati sama inimesega. Eve teab teie ettevõtte lugu ja eripärasid.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Täpsus &amp; tähtajad</h4>
+          <p class="feature-item__desc">Kõik deklaratsioonid esitatakse õigeaegselt. Tähtaegade rikkumist ei esine.</p>
+        </div>
+        <div class="feature-item">
+          <h4 class="feature-item__title">Kaasaegne töökorraldus</h4>
+          <p class="feature-item__desc">Töötame digitaalselt – MERIT Aktiva, e-post, pilveteenused. Paberimajandust minimaalselt.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <div class="footer__links">
+      <a href="#" onclick="showPage('teenused'); return false;">Teenused</a>
+      <a href="#" onclick="showPage('kontakt'); return false;">Kontakt</a>
+    </div>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== PAGE: KONTAKT ==================== -->
+<div id="kontakt" class="page">
+  <div class="content">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section__label">Võta ühendust</p>
+        <h2>Räägime teie raamatupidamisest</h2>
+        <p>Oleme saadaval esmaspäevast reedeni kella 9–17. Kirjutage meile, helistage või täitke kontaktivorm – vastame 24 tunni jooksul.</p>
+        <p>Esimene konsultatsioon on alati tasuta.</p>
+
+        <div class="contact-details">
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 10.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92v2z" transform="translate(1,1)"/>
+            </svg>
+            <div>
+              <strong>Telefon</strong>
+              +372 5XXX XXXX
+            </div>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+            <div>
+              <strong>E-post</strong>
+              <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="690c1f0c470408051f082907061b0d000a1a1d10050c470c0c">[email&#160;protected]</a>
+            </div>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <div>
+              <strong>Asukoht</strong>
+              Tallinn, Eesti<br>
+              <span style="font-size:0.82rem;color:#999;">Kohtumised kokkuleppel</span>
+            </div>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+            <div>
+              <strong>Tööaeg</strong>
+              E–R 9:00–17:00
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Saatke sõnum</h3>
+        <div class="form-group">
+          <label>Teie nimi *</label>
+          <input type="text" placeholder="Eesnimi Perenimi">
+        </div>
+        <div class="form-group">
+          <label>E-post *</label>
+          <input type="email" placeholder="teie@email.ee">
+        </div>
+        <div class="form-group">
+          <label>Telefon</label>
+          <input type="tel" placeholder="+372 5XXX XXXX">
+        </div>
+        <div class="form-group">
+          <label>Teema</label>
+          <select>
+            <option value="">Valige teema</option>
+            <option>Raamatupidamisteenus</option>
+            <option>Maksuarvestus</option>
+            <option>Majandusaasta aruanne</option>
+            <option>Nõustamine</option>
+            <option>Hinnapäring</option>
+            <option>Muu</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Sõnum *</label>
+          <textarea placeholder="Kirjeldage lühidalt oma vajadusi..."></textarea>
+        </div>
+        <div class="form-submit">
+          <button class="btn btn--primary" onclick="submitForm()" style="width:100%; border:none; font-family:inherit; cursor:pointer;">Saada sõnum</button>
+        </div>
+        <div class="form-success" id="formSuccess">
+          ✓ Sõnum saadetud! Võtame teiega ühendust 24 tunni jooksul.
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer"><div class="content"><div class="footer__inner">
+    <span class="footer__brand">NordicStyle Studio OÜ</span>
+    <span class="footer__copy">© 2025 NordicStyle Studio OÜ</span>
+  </div></div></footer>
+</div>
+
+
+<!-- ==================== JAVASCRIPT ==================== -->
+<script>
+  // ---- SPA page switching ----
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    document.querySelectorAll('.nav__link').forEach(l => l.classList.remove('active'));
+    const map = {
+      koduleht: 0,
+      teenused: 0, raamatupidamine: 0, maksuarvestus: 0, aruanded: 0, noustamine: 0, epood: 0,
+      hinnakiri: 1,
+      ettevottest: 2,
+      kontakt: 3
+    };
+    const links = document.querySelectorAll('.nav__menu .nav__link');
+    if (links[map[id]] !== undefined) links[map[id]].classList.add('active');
+
+    // Re-trigger fade-up animations on page switch
+    setTimeout(triggerFadeUps, 50);
+  }
+
+  // ---- Nav scroll effect ----
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', function() {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // ---- Mobile menu ----
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileClose = document.getElementById('mobileClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  if (mobileClose) mobileClose.addEventListener('click', closeMobile);
+  function closeMobile() { mobileMenu.classList.remove('open'); }
+
+  // ---- Fade-up animations ----
+  function triggerFadeUps() {
+    const fadeEls = document.querySelectorAll('.page.active .fade-up');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeEls.forEach(el => {
+      el.classList.remove('visible');
+      observer.observe(el);
+    });
+  }
+  triggerFadeUps();
+
+  // ---- Form mock submit ----
+  function submitForm() {
+    const success = document.getElementById('formSuccess');
+    success.style.display = 'block';
+    setTimeout(() => { success.style.display = 'none'; }, 5000);
+  }
+</script>
+
+</body>
+</html>
