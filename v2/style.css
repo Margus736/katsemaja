@@ -652,8 +652,18 @@ a { text-decoration: none; color: inherit; }
   .nav__logo { flex-shrink: 1; min-width: 0; }
   .nav__logo img { max-width: 100%; width: auto; }
 
-  .hero__content { padding: 0 1.5rem; }
-  .hero__box { padding: 2rem; }
+  .hero { flex-direction: column; min-height: auto; }
+  .hero__bg { position: relative; inset: auto; height: 380px; }
+  .hero__bg img {
+    position: static; width: 100%; height: 100%;
+    object-fit: cover; transform: none; opacity: 1;
+  }
+  .hero__content { position: static; padding: 2rem 1.5rem; justify-content: center; }
+  .hero__box {
+    padding: 2rem; margin-top: 0; max-width: none; width: 100%;
+    background: var(--surface); backdrop-filter: none; -webkit-backdrop-filter: none;
+    border: none;
+  }
   .container { padding: 0 1.5rem; }
 
   .portfolio { padding: 4rem 0; }
@@ -686,7 +696,7 @@ a { text-decoration: none; color: inherit; }
 
 @media (max-width: 600px) {
   .nav__inner { padding: 1.25rem 1.5rem; }
-  .hero { min-height: 600px; }
+  .hero__bg { height: 300px; }
   .gallery-grid { columns: 1; }
   .gallery-item:nth-child(n) { margin-top: 0; }
   .calendar-card { padding: 2rem 1.5rem; }
