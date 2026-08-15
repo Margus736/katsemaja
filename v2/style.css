@@ -349,7 +349,7 @@ a { text-decoration: none; color: inherit; }
 .silk-img-wrap img {
   border-radius: var(--radius-md);
   box-shadow: 0 25px 60px rgba(28, 28, 26, 0.15);
-  transform: rotate(3deg); width: 100%;
+  transform: rotate(0deg); width: 100%;
 }
 .silk-text { display: flex; flex-direction: column; gap: 1.5rem; }
 .silk-tag {
