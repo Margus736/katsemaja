@@ -264,6 +264,8 @@ a { text-decoration: none; color: inherit; }
    COLLECTION CARDS (Portfolio)
    =========================== */
 .portfolio { padding: 8rem 0; background-color: var(--surface-container-low); }
+.portfolio--ceramics { padding-bottom: 2rem; }
+.portfolio--textile { padding-top: 2rem; }
 
 .collections-grid {
   display: grid;
@@ -667,6 +669,8 @@ a { text-decoration: none; color: inherit; }
   .container { padding: 0 1.5rem; }
 
   .portfolio { padding: 4rem 0; }
+  .portfolio--ceramics { padding-bottom: 1.5rem; }
+  .portfolio--textile { padding-top: 1.5rem; }
   .section-header { flex-direction: column; align-items: flex-start; }
   .collections-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
   .collection-card:nth-child(1),
